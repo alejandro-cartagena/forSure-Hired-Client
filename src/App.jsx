@@ -1,7 +1,24 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  return <div className="text-center text-5xl text-red-500">asd</div>;
+  return (
+    <div className="bg-slate-200 flex flex-col min-h-[100vh]">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" />
+        <Route path="/signup" />
+        <Route path="/dashboard" />
+        <Route path="/ai" />
+        <Route path="/study" />
+      </Routes>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
