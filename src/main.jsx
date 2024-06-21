@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App.jsx";
-import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth.context.jsx";
-import { JobsProvider } from "./context/jobs.context.js";
+import { JobsProvider } from "./context/jobs.context.jsx";
+import App from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
