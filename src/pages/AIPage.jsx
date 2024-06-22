@@ -26,67 +26,107 @@ function AIPage() {
 
     const systemMessage = {
       role: "system",
-      content: `I have a job description pasted below. Based on this job description, generate a list of 10 interview questions that are relevant to the role, responsibilities, and qualifications mentioned. Make sure the questions cover both technical and behavioral aspects suitable for assessing the candidate's fit for the position.
+      content: `Here is a job description:
 
-I want to create a multiple-choice quiz for the user. Each question should have three incorrect answers and one correct answer relevant to the question.
+${jobDescription}
+
+Based on this job description, I need you to generate 10 interview questions relevant to the role, responsibilities, and qualifications mentioned, divided between technical and behavioural aspects. Each question should be suitable for assessing the candidate's fit for the position.
+
+Furthermore, for each question, please write three incorrect answers and one correct answer.
 
 Please generate the response in the following JSON format, strictly adhering to the structure provided, and ensure there are no backticks, no additional text, or formatting:
       
-    
-        {
-    "response": {
-        "behavioral": {
-            "questions": [
-                "Describe a situation where you had to work closely with a team to overcome a challenge. How did you contribute to the team's success?",
-                "Can you provide an example of a time when you had to prioritize multiple tasks with competing deadlines? How did you handle it?",
-                "Tell me about a time when you identified a problem with existing software and proposed a solution. How did you go about implementing the changes?",
-                "Give me an example of a project where you had to ensure your code was well-documented and efficient. What steps did you take to achieve this?",
-                "Have you ever faced resistance to changes you recommended in a software application? How did you handle the situation?"
-            ],
-            "incorrectAnswers": {
-                "incorrectAnswersForBehavioralQuestion1": ["Providing all the answers without involving the team", "Ignoring team input and working alone", "Blaming others for any obstacles faced"],
-                "incorrectAnswersForBehavioralQuestion2": ["Procrastinating and missing deadlines", "Randomly picking tasks to complete", "Delegating all tasks to others"],
-                "incorrectAnswersForBehavioralQuestion3": ["Ignoring the problem and leaving it unresolved", "Making changes without understanding the issue", "Relying on others to solve the problem"],
-                "incorrectAnswersForBehavioralQuestion4": ["Writing convoluted and messy code", "Not bothering with documenting code at all", "Not considering efficiency when coding"],
-                "incorrectAnswersForBehavioralQuestion5": ["Forcing changes without proper reasoning", "Ignoring feedback and not addressing concerns", "Implementing changes without proper testing"]
-            },
-            "answers": [
-                "Collaborative problem-solving and ensuring success for the team",
-                "Effective time management and task prioritization",
-                "Analyzing software issues and proposing effective solutions",
-                "Prioritizing documentation and code efficiency",
-                "Handling resistance to change professionally and fostering cooperation"
-            ]
-        },
-        "technical": {
-            "questions": [
-                "Can you explain the difference between object-oriented programming and functional programming?",
-                "How do you ensure code reusability in your projects? Provide examples.",
-                "What are some common security vulnerabilities in JavaScript and how would you prevent them?",
-                "Describe a situation where you had to optimize code for performance. What approach did you take?",
-                "How do you stay updated with the latest software development trends and technologies?"
-            ],
-            "incorrectAnswers": {
-                "incorrectAnswersForTechnicalQuestion1": ["There is no difference between OOP and functional programming", "Object-oriented programming only focuses on UI design", "Functional programming is not used in software development"],
-                "incorrectAnswersForTechnicalQuestion2": ["Writing new code for every project without reusing", "Copying and pasting code from the internet without understanding", "Not considering code reusability at all"],
-                "incorrectAnswersForTechnicalQuestion3": ["Security vulnerabilities do not exist in JavaScript", "Relying solely on built-in security features for protection", "Sharing sensitive information openly in code"],
-                "incorrectAnswersForTechnicalQuestion4": ["Never optimizing code for performance", "Using trial and error without understanding the issues", "Ignoring the need for code optimization"],
-                "incorrectAnswersForTechnicalQuestion5": ["Sticking to outdated technologies without exploration", "Not learning from industry best practices or attending conferences", "Ignoring new trends and technologies"]
-            },
-            "answers": [
-                "Understanding of programming paradigms and their differences",
-                "Implementing code reusability for efficiency",
-                "Knowledge of JavaScript vulnerabilities and preventive measures",
-                "Approaching code optimization for improved performance",
-                "Commitment to continuous learning and skills enhancement"
-            ]
-        }
-    }
+{
+  response: {
+    behavioral: {
+      questions: [
+        "<generated behavioral question 1>",
+        "<generated behavioral question 2>",
+        "<generated behavioral question 3>",
+        "<generated behavioral question 4>",
+        "<generated behavioral question 5>",
+      ],
+      correctAnswers: [
+        "<correct answer for behavioral question 1>",
+        "<correct answer for behavioral question 2>",
+        "<correct answer for behavioral question 3>",
+        "<correct answer for behavioral question 4>",
+        "<correct answer for behavioral question 5>",
+      ],
+      incorrectAnswers: [
+        [
+          "<incorrect answer 1 for behavioral question 1>",
+          "<incorrect answer 2 for behavioral question 1>",
+          "<incorrect answer 3 for behavioral question 1>",
+        ],
+        [
+          "<incorrect answer 1 for behavioral question 2>",
+          "<incorrect answer 2 for behavioral question 2>",
+          "<incorrect answer 3 for behavioral question 2>",
+        ],
+        [
+          "<incorrect answer 1 for behavioral question 3>",
+          "<incorrect answer 2 for behavioral question 3>",
+          "<incorrect answer 3 for behavioral question 3>",
+        ],
+        [
+          "<incorrect answer 1 for behavioral question 4>",
+          "<incorrect answer 2 for behavioral question 4>",
+          "<incorrect answer 3 for behavioral question 4>",
+        ],
+        [
+          "<incorrect answer 1 for behavioral question 5>",
+          "<incorrect answer 2 for behavioral question 5>",
+          "<incorrect answer 3 for behavioral question 5>",
+        ],
+      ],
+    },
+    technical: {
+      questions: [
+        "<generated technical question 1>",
+        "<generated technical question 2>",
+        "<generated technical question 3>",
+        "<generated technical question 4>",
+        "<generated technical question 5>",
+      ],
+      correctAnswers: [
+        "<correct answer for technical question 1>",
+        "<correct answer for technical question 2>",
+        "<correct answer for technical question 3>",
+        "<correct answer for technical question 4>",
+        "<correct answer for technical question 5>",
+      ],
+      incorrectAnswers: [
+        [
+          "<incorrect answer 1 for technical question 1>",
+          "<incorrect answer 2 for technical question 1>",
+          "<incorrect answer 3 for technical question 1>",
+        ],
+        [
+          "<incorrect answer 1 for technical question 2>",
+          "<incorrect answer 2 for technical question 2>",
+          "<incorrect answer 3 for technical question 2>",
+        ],
+        [
+          "<incorrect answer 1 for technical question 3>",
+          "<incorrect answer 2 for technical question 3>",
+          "<incorrect answer 3 for technical question 3>",
+        ],
+        [
+          "<incorrect answer 1 for technical question 4>",
+          "<incorrect answer 2 for technical question 4>",
+          "<incorrect answer 3 for technical question 4>",
+        ],
+        [
+          "<incorrect answer 1 for technical question 5>",
+          "<incorrect answer 2 for technical question 5>",
+          "<incorrect answer 3 for technical question 5>",
+        ],
+      ],
+    },
+  },
 }
-
-        
-This is the Job Description:
-${jobDescription}`,
+`,
     };
 
     const userMessage = {
@@ -209,7 +249,15 @@ ${jobDescription}`,
                   value={softwareEngineerJobDescription}
                   checked={jobDescription === softwareEngineerJobDescription}
                 />
-                <span className={`text-[#334155] font-medium`}>Example</span>
+                <span
+                  className={`${
+                    jobDescription === softwareEngineerJobDescription
+                      ? "text-green-700"
+                      : "text-[#334155]"
+                  } font-medium`}
+                >
+                  Example
+                </span>
               </label>
             </div>
 

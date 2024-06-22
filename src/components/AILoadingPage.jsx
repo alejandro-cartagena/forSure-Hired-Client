@@ -44,7 +44,7 @@ function AILoadingPage() {
           - 5 Behavioral Questions designed to assess your fit for the role.
         </p>
       </div>
-      <h2 className="font-semibold text-3xl">Good Luck!</h2>
+      <h2 className="font-semibold text-3xl mb-10">Good Luck!</h2>
     </div>
   );
 }
