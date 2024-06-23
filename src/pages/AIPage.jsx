@@ -32,7 +32,8 @@ ${jobDescription}
 
 Based on this job description, I need you to generate 10 interview questions relevant to the role, responsibilities, and qualifications mentioned, divided between technical and behavioural aspects. Each question should be suitable for assessing the candidate's fit for the position.
 
-Furthermore, for each question, please write three incorrect answers and one correct answer.
+Furthermore, for each question, please write three incorrect answers and one correct answer. Make sure that the attribute "incorrectAnswers" is a 2D array, with each array inside
+containing three incorrect answers.
 
 Please generate the response in the following JSON format, strictly adhering to the structure provided, and ensure there are no backticks, no additional text, or formatting:
       
