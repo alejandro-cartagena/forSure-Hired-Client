@@ -3,7 +3,10 @@ import axios from "axios";
 
 import AILoadingPage from "../components/AILoadingPage.jsx";
 
-import { softwareEngineerJobDescription } from "../defaultJobDescriptions.js";
+import {
+  softwareEngineerJobDescription,
+  openAIPrompt,
+} from "../aiPageAssets.js";
 import api from "../services/api.js";
 
 const apiKey = import.meta.env.VITE_REACT_API_KEY;
@@ -27,107 +30,9 @@ function AIPage() {
     const systemMessage = {
       role: "system",
       content: `Here is a job description:
-
-${jobDescription}
-
-Based on this job description, I need you to generate 10 interview questions relevant to the role, responsibilities, and qualifications mentioned, divided between technical and behavioural aspects. Each question should be suitable for assessing the candidate's fit for the position.
-
-Furthermore, for each question, please write three incorrect answers and one correct answer. Make sure that the attribute "incorrectAnswers" is a 2D array, with each array inside
-containing three incorrect answers.
-
-Please generate the response in the following JSON format, strictly adhering to the structure provided, and ensure there are no backticks, no additional text, or formatting:
-      
-{
-  response: {
-    behavioral: {
-      questions: [
-        "<generated behavioral question 1>",
-        "<generated behavioral question 2>",
-        "<generated behavioral question 3>",
-        "<generated behavioral question 4>",
-        "<generated behavioral question 5>",
-      ],
-      correctAnswers: [
-        "<correct answer for behavioral question 1>",
-        "<correct answer for behavioral question 2>",
-        "<correct answer for behavioral question 3>",
-        "<correct answer for behavioral question 4>",
-        "<correct answer for behavioral question 5>",
-      ],
-      incorrectAnswers: [
-        [
-          "<incorrect answer 1 for behavioral question 1>",
-          "<incorrect answer 2 for behavioral question 1>",
-          "<incorrect answer 3 for behavioral question 1>",
-        ],
-        [
-          "<incorrect answer 1 for behavioral question 2>",
-          "<incorrect answer 2 for behavioral question 2>",
-          "<incorrect answer 3 for behavioral question 2>",
-        ],
-        [
-          "<incorrect answer 1 for behavioral question 3>",
-          "<incorrect answer 2 for behavioral question 3>",
-          "<incorrect answer 3 for behavioral question 3>",
-        ],
-        [
-          "<incorrect answer 1 for behavioral question 4>",
-          "<incorrect answer 2 for behavioral question 4>",
-          "<incorrect answer 3 for behavioral question 4>",
-        ],
-        [
-          "<incorrect answer 1 for behavioral question 5>",
-          "<incorrect answer 2 for behavioral question 5>",
-          "<incorrect answer 3 for behavioral question 5>",
-        ],
-      ],
-    },
-    technical: {
-      questions: [
-        "<generated technical question 1>",
-        "<generated technical question 2>",
-        "<generated technical question 3>",
-        "<generated technical question 4>",
-        "<generated technical question 5>",
-      ],
-      correctAnswers: [
-        "<correct answer for technical question 1>",
-        "<correct answer for technical question 2>",
-        "<correct answer for technical question 3>",
-        "<correct answer for technical question 4>",
-        "<correct answer for technical question 5>",
-      ],
-      incorrectAnswers: [
-        [
-          "<incorrect answer 1 for technical question 1>",
-          "<incorrect answer 2 for technical question 1>",
-          "<incorrect answer 3 for technical question 1>",
-        ],
-        [
-          "<incorrect answer 1 for technical question 2>",
-          "<incorrect answer 2 for technical question 2>",
-          "<incorrect answer 3 for technical question 2>",
-        ],
-        [
-          "<incorrect answer 1 for technical question 3>",
-          "<incorrect answer 2 for technical question 3>",
-          "<incorrect answer 3 for technical question 3>",
-        ],
-        [
-          "<incorrect answer 1 for technical question 4>",
-          "<incorrect answer 2 for technical question 4>",
-          "<incorrect answer 3 for technical question 4>",
-        ],
-        [
-          "<incorrect answer 1 for technical question 5>",
-          "<incorrect answer 2 for technical question 5>",
-          "<incorrect answer 3 for technical question 5>",
-        ],
-      ],
-    },
-  },
-}
-`,
+      ${jobDescription} 
+      ${openAIPrompt}
+      `,
     };
 
     const userMessage = {
