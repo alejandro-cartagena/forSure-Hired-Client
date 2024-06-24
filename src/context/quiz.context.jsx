@@ -6,6 +6,11 @@ const QuizContext = createContext();
 function QuizProvider({ children }) {
   const [quiz, setQuiz] = useState(null);
 
+  const getAllQuizzes = async () => {
+    try {
+    } catch (error) {}
+  };
+
   const getSingleQuiz = async (quizId) => {
     try {
       const response = await api.get(`/quiz/${quizId}`);
@@ -15,7 +20,19 @@ function QuizProvider({ children }) {
     }
   };
 
-  return <QuizContext.Provider>{children}</QuizContext.Provider>;
+  const createQuiz = async (quizInfo) => {
+    try {
+      const response = await api.post("/quiz", quizInfo);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  return (
+    <QuizContext.Provider value={{ quiz, getSingleQuiz, createQuiz }}>
+      {children}
+    </QuizContext.Provider>
+  );
 }
 
 export { QuizContext, QuizProvider };

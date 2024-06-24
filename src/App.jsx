@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import QuizPage from "./pages/QuizPage";
 
 // Pages
 import AIPage from "./pages/AIPage";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" />
         <Route path="/ai" element={<AIPage />} />
+        <Route path="/quiz" element={<QuizPage />} />
         <Route path="/study" />
       </Routes>
       <Footer />

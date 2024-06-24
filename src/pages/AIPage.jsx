@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
+import { QuizContext } from "../context/quiz.context.jsx";
 import AILoadingPage from "../components/AILoadingPage.jsx";
 
 import {
@@ -12,6 +14,10 @@ import api from "../services/api.js";
 const apiKey = import.meta.env.VITE_REACT_API_KEY;
 
 function AIPage() {
+  const { createQuiz } = useContext(QuizContext);
+
+  const [quizInfo, setQuizInfo] = useState(null);
+
   const [jobDescription, setJobDescription] = useState("");
 
   const [awaitingResponse, setAwaitingResponse] = useState(false);
@@ -67,18 +73,32 @@ function AIPage() {
 
   useEffect(() => {
     try {
-      console.log(chatGPTResponse);
-      let parseResponse = JSON.parse(chatGPTResponse);
-      setChatGPTResponseJSON(parseResponse);
+      if (chatGPTResponse) {
+        const parseResponse = JSON.parse(chatGPTResponse);
+        setChatGPTResponseJSON(parseResponse);
+        setQuizInfo({
+          name: "Test Quiz",
+          behavioral: parseResponse.response?.behavioral,
+          technical: parseResponse.response?.technical,
+        });
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error parsing JSON:", error);
     }
   }, [chatGPTResponse]);
 
+  useEffect(() => {
+    if (quizInfo) {
+      createQuiz(quizInfo);
+    }
+  }, [quizInfo]);
+
   console.log(chatGPTResponseJSON);
+  console.log("Quiz Info -->", quizInfo);
 
   return (
     <div>
+      {/* {chatGPTResponse && <Navigate to={"/quiz"} />} */}
       {awaitingResponse ? (
         <AILoadingPage />
       ) : (
