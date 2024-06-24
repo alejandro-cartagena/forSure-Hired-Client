@@ -60,7 +60,7 @@ function AuthProvider({ children }) {
     try {
       const token = localStorage.getItem("authToken");
       if (token) {
-        const response = await api.post("/user/verify");
+        const response = await api.get("/user/verify");
         setUser(response.data.user);
         setIsLoggedIn(true);
       } else {

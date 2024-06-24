@@ -1,11 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import api from "../services/api";
 import toast from "react-hot-toast";
+import { AuthContext } from "./auth.context";
 
 const JobsContext = createContext();
 
 function JobsProvider({ children }) {
   const [jobs, setJobs] = useState(null);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const getAllUserJobs = async () => {
     try {
@@ -52,7 +54,7 @@ function JobsProvider({ children }) {
   };
 
   useEffect(() => {
-    getAllUserJobs();
+    isLoggedIn && getAllUserJobs();
   }, []);
 
   return (
@@ -64,4 +66,4 @@ function JobsProvider({ children }) {
   );
 }
 
-export { JobsProvider, JobsContext };
+export { JobsContext, JobsProvider };
