@@ -9,7 +9,6 @@ import {
   softwareEngineerJobDescription,
   openAIPrompt,
 } from "../aiPageAssets.js";
-import api from "../services/api.js";
 
 const apiKey = import.meta.env.VITE_REACT_API_KEY;
 
@@ -89,6 +88,7 @@ function AIPage() {
 
   useEffect(() => {
     if (quizInfo) {
+      // Creates the quiz in the DB
       createQuiz(quizInfo);
     }
   }, [quizInfo]);
@@ -98,7 +98,9 @@ function AIPage() {
 
   return (
     <div>
-      {/* {chatGPTResponse && <Navigate to={"/quiz"} />} */}
+      {chatGPTResponseJSON && (
+        <Navigate to={"/quiz"} state={{ quizData: quizInfo }} />
+      )}
       {awaitingResponse ? (
         <AILoadingPage />
       ) : (
