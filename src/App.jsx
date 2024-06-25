@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import { Toaster } from "react-hot-toast";
+import JobDescriptionPage from "./pages/JobDescriptionPage";
 
 function App() {
   const IsLoggedIn = () => {
@@ -24,10 +27,11 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-200 flex flex-col min-h-[100vh]">
+    <div className="bg-slate-50 flex flex-col min-h-[100vh]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+
 
         <Route element={<IsNotLoggedIn />}>
           <Route path="/login" element={<LoginPage />} />
@@ -39,8 +43,10 @@ function App() {
           <Route path="/ai" />
           <Route path="/study" />
         </Route>
+
       </Routes>
       <Footer />
+      <Toaster />
     </div>
   );
 }
