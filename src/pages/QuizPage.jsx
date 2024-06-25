@@ -33,7 +33,7 @@ function QuizPage() {
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-5xl text-center">Quiz Time!</h1>
-      <Quiz quiz={quizObject} shuffle={true}></Quiz>
+      <Quiz className="text-red-600" quiz={quizObject} shuffle={true}></Quiz>
     </div>
   );
 }
