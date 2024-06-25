@@ -25,7 +25,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
         <Route path="/quiz/:jobId" element={<AIPage />} />
-        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} />
         <Route path="/study" />
       </Routes>
       <Footer />

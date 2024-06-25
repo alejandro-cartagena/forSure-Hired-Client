@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 import { QuizContext } from "../context/quiz.context.jsx";
+import { JobsContext } from "../context/jobs.context.jsx";
 import AILoadingPage from "../components/AILoadingPage.jsx";
 
 import {
@@ -13,15 +14,31 @@ import {
 const apiKey = import.meta.env.VITE_REACT_API_KEY;
 
 function AIPage() {
-  const { createQuiz } = useContext(QuizContext);
-
-  const [quizInfo, setQuizInfo] = useState(null);
-
+  // Job States and Variables
+  const { jobId } = useParams();
+  const { getSingleJob } = useContext(JobsContext);
   const [jobDescription, setJobDescription] = useState("");
+  const [singleJob, setSingleJob] = useState(null);
 
+  // Quiz States and Variables
+  const { createQuizWithJob, getSingleQuiz } = useContext(QuizContext);
+  const [quizInfo, setQuizInfo] = useState(null);
+  const [quizFromDB, setQuizFromDB] = useState(null);
+
+  // Open AI API States and Variables
   const [awaitingResponse, setAwaitingResponse] = useState(false);
   const [chatGPTResponse, setChatGPTResponse] = useState(null);
   const [chatGPTResponseJSON, setChatGPTResponseJSON] = useState(null);
+
+  // Fetches Job from DB to set the Job Description
+  useEffect(() => {
+    const fetchSingleJob = async () => {
+      const res = await getSingleJob(jobId);
+      setSingleJob(res);
+      setJobDescription(res.description);
+    };
+    fetchSingleJob();
+  }, []);
 
   const handleChange = (e) => {
     setJobDescription(e.target.value);
@@ -76,7 +93,7 @@ function AIPage() {
         const parseResponse = JSON.parse(chatGPTResponse);
         setChatGPTResponseJSON(parseResponse);
         setQuizInfo({
-          name: "Test Quiz",
+          name: singleJob.company.name + ", " + singleJob.title,
           behavioral: parseResponse.response?.behavioral,
           technical: parseResponse.response?.technical,
         });
@@ -86,27 +103,39 @@ function AIPage() {
     }
   }, [chatGPTResponse]);
 
+  // Creates the quiz in the DB and Saves the Quiz Id
   useEffect(() => {
     if (quizInfo) {
-      // Creates the quiz in the DB
-      createQuiz(quizInfo);
+      const createQuizAndReturnData = async () => {
+        const res = await createQuizWithJob(quizInfo, jobId);
+        setQuizFromDB(res);
+      };
+      createQuizAndReturnData();
     }
   }, [quizInfo]);
 
-  console.log(chatGPTResponseJSON);
-  console.log("Quiz Info -->", quizInfo);
+  // console.log("QUIZ FROM DB = ", quizFromDB);
+
+  // console.log(chatGPTResponseJSON);
+  // console.log("Quiz Info -->", quizInfo);
+  // console.log(singleJob);
 
   return (
     <div>
-      {chatGPTResponseJSON && (
-        <Navigate to={"/quiz"} state={{ quizData: quizInfo }} />
+      {quizFromDB && (
+        <Navigate
+          to={`/quiz/${jobId}/${quizFromDB.createdQuiz._id}`}
+          state={{ quizData: quizInfo }}
+        />
       )}
       {awaitingResponse ? (
         <AILoadingPage />
       ) : (
         <>
           <h1 className="text-[#334155] text-4xl text-center font-semibold mt-16 mb-8">
-            Provide a Job Description
+            {singleJob
+              ? `${singleJob.company.name} Job Description`
+              : "Provide a Job Description"}
           </h1>
 
           <form onSubmit={handleSubmit} className="flex flex-col items-center">
@@ -200,7 +229,7 @@ function AIPage() {
               onChange={handleChange}
             />
 
-            <button className="bg-slate-300 text-xl p-4 rounded-md ease-in-out duration-300 hover:scale-105 hover:bg-[#DCFFCF] mb-12">
+            <button className="bg-slate-300 text-xl p-4 rounded-md ease-in-out duration-300 hover:scale-105 hover:bg-[#65a30d] hover:text-white mb-12">
               Generate Quiz
             </button>
           </form>

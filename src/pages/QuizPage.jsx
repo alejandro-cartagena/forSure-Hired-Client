@@ -1,39 +1,78 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import Quiz from "react-quiz-component";
-import { quiz } from "../quizFunction";
+import { generateQuiz } from "../quizFunction";
+
+import { useContext } from "react";
+import { QuizContext } from "../context/quiz.context";
 
 function QuizPage() {
-  const location = useLocation();
-  const { quizData } = location.state || {};
-  const allQuizQuestions = quizData.behavioral.questions.concat(
-    quizData.technical.questions
-  );
-  const allQuizAnswers = quizData.behavioral.correctAnswers.concat(
-    quizData.technical.correctAnswers
-  );
-  const allQuizIncorrectAnswers = quizData.behavioral.incorrectAnswers.concat(
-    quizData.technical.incorrectAnswers
-  );
+  const { quiz, getSingleQuiz } = useContext(QuizContext);
+  const { jobId, quizId } = useParams();
+  const [quizObject, setQuizObject] = useState(null);
+  const [isEndOfQuiz, setIsEndOfQuiz] = useState(false);
+  const [quizRestarted, setQuizRestarted] = useState(false);
 
-  const quizObject = quiz(
-    quizData.name,
-    allQuizQuestions,
-    allQuizAnswers,
-    allQuizIncorrectAnswers
-  );
+  useState(() => {
+    const fetchQuiz = async () => {
+      await getSingleQuiz(jobId, quizId);
+    };
+    fetchQuiz();
+  }, []);
 
-  console.log(location.state);
+  const generateQuizObject = () => {
+    setQuizObject(
+      generateQuiz(
+        quiz.name,
+        quiz.behavioral.questions.concat(quiz.technical.questions),
+        quiz.behavioral.correctAnswers.concat(quiz.technical.correctAnswers),
+        quiz.behavioral.incorrectAnswers.concat(quiz.technical.incorrectAnswers)
+      )
+    );
+  };
 
-  console.log("QUIZ DATA = ", quizData);
-  console.log("Quiz Questions --> ", allQuizQuestions);
-  console.log("Quiz Answers --> ", allQuizAnswers);
-  console.log("Quiz Incorrect Answers --> ", allQuizIncorrectAnswers);
-  console.log("Quiz Object --> ", quizObject);
+  useEffect(() => {
+    if (quiz) {
+      generateQuizObject();
+    }
+  }, [quiz]);
+
+  useEffect(() => {
+    if (!isEndOfQuiz && quizRestarted) {
+      generateQuizObject();
+    }
+  }, [isEndOfQuiz, quizRestarted]);
+
+  const setQuizResult = () => {
+    setIsEndOfQuiz(true);
+  };
+
+  const restartQuiz = () => {
+    setQuizObject(null);
+    setQuizRestarted(true);
+    setIsEndOfQuiz(false);
+  };
+
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-5xl text-center">Quiz Time!</h1>
-      <Quiz className="text-red-600" quiz={quizObject} shuffle={true}></Quiz>
+      <h1 className="text-5xl text-center mb-6">Quiz Time!</h1>
+      {isEndOfQuiz && (
+        <button
+          onClick={restartQuiz}
+          className="bg-slate-300 p-2 rounded hover:bg-[#65a30d] hover:text-white"
+        >
+          Restart Quiz
+        </button>
+      )}
+      {quizObject && (
+        <Quiz
+          quiz={quizObject}
+          shuffle={true}
+          shuffleAnswer={true}
+          timer={300}
+          onComplete={setQuizResult}
+        ></Quiz>
+      )}
     </div>
   );
 }

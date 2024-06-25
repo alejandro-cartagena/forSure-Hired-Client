@@ -1,9 +1,28 @@
 /* Styles to override the npm react-quiz component */
 
+/******************************/
+/* BEFORE QUIZ STARTS STYLES */
+/****************************/
 .react-quiz-container {
-  border: solid black;
+  border: none;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  padding: 2em;
   width: 90%;
-  max-width: 700px !important;
+  max-width: 900px !important;
+}
+
+.react-quiz-container h2 {
+  font-size: 2rem;
+}
+
+.react-quiz-container h2 + div {
+  font-size: 1.5rem;
+}
+
+.react-quiz-container .quiz-synopsis {
+  font-size: 1.125rem;
+  margin-bottom: 3em !important;
 }
 
 .react-quiz-container .startQuizWrapper .startQuizBtn {
@@ -19,4 +38,61 @@
   transform: scale(1.05);
   background-color: #65a30d;
   color: #ffffff;
+}
+
+/**************************/
+/* QUIZ QUESTIONS STYLES */
+/************************/
+
+.questionWrapperBody h3 {
+  font-size: 1.5rem;
+}
+
+.answerBtn {
+  background-color: #cbd5e1 !important;
+  font-size: 1rem !important;
+}
+
+.correct {
+  background-color: #65a30d !important;
+}
+
+.incorrect {
+  background-color: #f87171 !important;
+}
+
+.questionBtnContainer {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.nextQuestionBtn {
+  background-color: #ffffff;
+  padding: 0.5em 1em !important;
+  font-size: 1.125rem !important;
+}
+
+.react-quiz-container .selection-tag.single,
+.react-quiz-container .number-of-selection {
+  background-color: #94a3b8 !important;
+}
+
+/**************************/
+/* QUIZ QUESTIONS STYLES */
+/************************/
+
+.quiz-result-filter {
+  width: 140px !important;
+}
+
+.filter-dropdown-select {
+  padding: 1em !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.selected-option {
+  position: static !important;
 }

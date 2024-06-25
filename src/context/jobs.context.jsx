@@ -18,6 +18,15 @@ function JobsProvider({ children }) {
     }
   };
 
+  const getSingleJob = async (jobId) => {
+    try {
+      const response = await api.get(`/jobs/${jobId}`);
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const createJob = async (jobInfo) => {
     try {
       const response = await api.post("/jobs", jobInfo);
@@ -60,7 +69,14 @@ function JobsProvider({ children }) {
 
   return (
     <JobsContext.Provider
-      value={{ jobs, getAllUserJobs, createJob, updateJob, deleteJob }}
+      value={{
+        jobs,
+        getAllUserJobs,
+        createJob,
+        updateJob,
+        deleteJob,
+        getSingleJob,
+      }}
     >
       {children}
     </JobsContext.Provider>

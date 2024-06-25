@@ -1,4 +1,4 @@
-export const quiz = (
+export const generateQuiz = (
   quizName,
   quizQuestions,
   quizAnswers,
@@ -6,8 +6,7 @@ export const quiz = (
 ) => {
   const quizObject = {
     quizTitle: quizName,
-    quizSynopsis:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+    quizSynopsis: `This quiz is designed to assess the skills and knowledge required for the ${quizName} role. The questions cover various aspects relevant to the position, including industry-specific knowledge, problem-solving abilities, and practical skills. The goal is to evaluate your proficiency and ensure you have the necessary competencies to succeed in this role.`,
     nrOfQuestions: "10",
     questions: [],
   };
