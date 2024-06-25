@@ -4,7 +4,7 @@ import linkedin from "../assets/icon/linkedin.svg";
 
 export default function Footer() {
   return (
-    <div className="flex items-center justify-between py-6 px-16 bg-slate-50 mt-auto">
+    <div className="flex items-center justify-between py-6 px-16 bg-slate-200 mt-auto">
       <div>
         <p className="content-center text-4xl">
           for<span className="text-[#4DB010]">Sure</span>Hired
