@@ -1,6 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { JobsContext } from "../context/jobs.context";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyCheckDollar,
@@ -8,39 +6,27 @@ import {
   faGlobe,
   faListCheck,
 } from "@fortawesome/free-solid-svg-icons";
+import DropDown3Dots from "./DropDown3Dots";
+import ManageJobForm from "./ManageJobForm";
 
-const formatSalary = (min, max) => {
-  return `$${(min / 1000).toFixed(0)}K - ${(max / 1000).toFixed(0)}K/Year`;
-};
-const formatDateToAgo = (date) => {
-  let currDate = new Date(date);
-  let now = Date.now();
-  return Math.floor((now - currDate) / 86400000);
-};
-
-const JobDescription = () => {
-  const [showJobModal, setShowJobModal] = useState(false);
+const JobDescription = ({ selectedJob }) => {
   const [showMore, setShowMore] = useState(false);
-  const { jobs, getAllUserJobs, deleteJob, updateJob } =
-    useContext(JobsContext);
-  const [selectedJob, setSelectedJob] = useState(null);
-  const { jobId } = useParams();
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      await getAllUserJobs();
-    };
-    fetchJobs();
-  }, []);
-
-  useEffect(() => {
-    if (jobs) {
-      setSelectedJob(jobs.find((job) => job._id === jobId));
-    }
-  }, [jobs]);
+  const formatSalary = (min, max) => {
+    return `$${(min / 1000).toFixed(0)}K - ${(max / 1000).toFixed(0)}K/Year`;
+  };
+  const formatDateToAgo = (date) => {
+    let currDate = new Date(date);
+    let now = Date.now();
+    return Math.floor((now - currDate) / 86400000);
+  };
 
   return selectedJob ? (
-    <div className="flex flex-col gap-4 mb-2 px-20 py-10 text-slate-700">
+    <div className="relative flex flex-col gap-4 mb-2 p-10 bg-slate-50 text-slate-700 overflow-auto w-full rounded-md mr-4">
+      <div className="absolute top-4 right-4">
+        <DropDown3Dots setShowEditModal={setShowEditModal} />
+      </div>
       <div className="inline-flex gap-4 items-center">
         <img
           src={selectedJob.company.logo}
@@ -115,9 +101,14 @@ const JobDescription = () => {
           Show {showMore ? "less" : "more"}
         </p>
       </div>
+      {showEditModal && (
+        <ManageJobForm job={selectedJob} closeModal={setShowEditModal} />
+      )}
     </div>
   ) : (
-    <p>no job selected</p>
+    <h1 className="text-3xl text-center p-5 w-full font-semibold text-slate-700">
+      Please select a Job to display Details
+    </h1>
   );
 };
 
