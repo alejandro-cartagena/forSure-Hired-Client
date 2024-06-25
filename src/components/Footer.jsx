@@ -4,6 +4,7 @@ import linkedin from "../assets/icon/linkedin.svg";
 
 export default function Footer() {
   return (
+
     <div className="flex items-center justify-between py-6 md:px-32 px-20 bg-slate-50 mt-auto">
       <div>
         <p className="content-center text-4xl">

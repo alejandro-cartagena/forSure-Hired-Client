@@ -44,9 +44,10 @@ function JobsProvider({ children }) {
 
   const deleteJob = async (jobId) => {
     try {
-      const response = await api.delete(`/jobs/${jobId})`);
+      const response = await api.delete(`/jobs/${jobId}`);
       if (response.status === 200) {
-        toast, success(response.data.message);
+        toast.success(response.data.message);
+        getAllUserJobs();
       }
     } catch (error) {
       toast.error(error.message);
