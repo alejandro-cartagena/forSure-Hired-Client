@@ -31,18 +31,19 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-    
+
         <Route element={<IsNotLoggedIn />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Route>
 
         <Route element={<IsLoggedIn />}>
-          <Route path="/dashboard" />
-          <Route path="/ai" />
-          <Route path="/study" />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/jobs" element={<JobDescriptionPage />} />
+          <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
+          {/* <Route path="/quiz/:jobId" element={<AIPage />} />
+          <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} /> */}
         </Route>
-    
       </Routes>
       <Footer />
       <Toaster />
