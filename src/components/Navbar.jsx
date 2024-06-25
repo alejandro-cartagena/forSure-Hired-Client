@@ -21,6 +21,10 @@ export default function Navbar() {
         <Link to="/study">
           <div>Study</div>
         </Link>
+
+        <Link to="/login">
+          <div>Login</div>
+        </Link>
       </div>
     </div>
   );
