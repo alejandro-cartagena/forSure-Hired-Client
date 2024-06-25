@@ -31,8 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-
-
+    
         <Route element={<IsNotLoggedIn />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
@@ -43,7 +42,7 @@ function App() {
           <Route path="/ai" />
           <Route path="/study" />
         </Route>
-
+    
       </Routes>
       <Footer />
       <Toaster />
