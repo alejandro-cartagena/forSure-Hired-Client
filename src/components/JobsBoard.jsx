@@ -67,7 +67,7 @@ const JobsBoard = () => {
             appliedJobs.map((job) => (
               <div
                 key={job._id}
-                className="relative shadow-md bg-slate-50 rounded-md hover:bg-slate-200"
+                className="relative shadow-md bg-slate-50 rounded-md hover:bg-green-200"
               >
                 <Link to={`/jobs/${job._id}`}>
                   <JobCard job={job} />

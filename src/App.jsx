@@ -19,6 +19,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
+        <Route path="/jobs" element={<JobDescriptionPage />} />
         <Route path="/ai" />
         <Route path="/study" />
       </Routes>

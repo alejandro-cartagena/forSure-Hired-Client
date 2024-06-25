@@ -36,7 +36,7 @@ const DashboardPage = () => {
               type="text"
               name="search"
               placeholder="Search..."
-              className="py-1.5 px-3 rounded-lg bg-slate-200 placeholder-slate-400 font-semibold"
+              className="py-1.5 px-3 rounded-lg bg-slate-200 placeholder-gray-700 "
             />
             <button
               className="bg-green-600 px-4 rounded-lg text-white font-semibold hover:scale-105 hover:opacity-70 h-9 whitespace-nowrap"
