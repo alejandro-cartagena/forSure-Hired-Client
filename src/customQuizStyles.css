@@ -1,0 +1,22 @@
+/* Styles to override the npm react-quiz component */
+
+.react-quiz-container {
+  border: solid black;
+  width: 90%;
+  max-width: 700px !important;
+}
+
+.react-quiz-container .startQuizWrapper .startQuizBtn {
+  display: block;
+  margin: 0 auto;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 1.25rem !important;
+  transition: ease-in-out 0.15s;
+}
+
+.react-quiz-container .startQuizWrapper .startQuizBtn:hover {
+  transform: scale(1.05);
+  background-color: #65a30d;
+  color: #ffffff;
+}

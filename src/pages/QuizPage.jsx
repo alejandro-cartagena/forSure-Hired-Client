@@ -31,11 +31,9 @@ function QuizPage() {
   console.log("Quiz Incorrect Answers --> ", allQuizIncorrectAnswers);
   console.log("Quiz Object --> ", quizObject);
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h1 className="text-5xl text-center">Quiz Time!</h1>
-      <Quiz quiz={quizObject} shuffle={true}>
-        <div>YOOOO</div>
-      </Quiz>
+      <Quiz quiz={quizObject} shuffle={true}></Quiz>
     </div>
   );
 }
