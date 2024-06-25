@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,17 +10,40 @@ import { Toaster } from "react-hot-toast";
 import JobDescriptionPage from "./pages/JobDescriptionPage";
 
 function App() {
+  const IsLoggedIn = () => {
+    return localStorage.getItem("authToken") ? (
+      <Outlet />
+    ) : (
+      <Navigate to="/login" />
+    );
+  };
+
+  const IsNotLoggedIn = () => {
+    return !localStorage.getItem("authToken") ? (
+      <Outlet />
+    ) : (
+      <Navigate to="/dashboard" />
+    );
+  };
+
   return (
     <div className="bg-slate-50 flex flex-col min-h-[100vh]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
-        <Route path="/ai" />
-        <Route path="/study" />
+
+
+        <Route element={<IsNotLoggedIn />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Route>
+
+        <Route element={<IsLoggedIn />}>
+          <Route path="/dashboard" />
+          <Route path="/ai" />
+          <Route path="/study" />
+        </Route>
+
       </Routes>
       <Footer />
       <Toaster />
