@@ -51,9 +51,10 @@ function AIPage() {
 
     const systemMessage = {
       role: "system",
-      content: `Here is a job description:
+      content: `${openAIPrompt}
+
+      Job Description:
       ${jobDescription} 
-      ${openAIPrompt}
       `,
     };
 
