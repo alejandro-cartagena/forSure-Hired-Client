@@ -8,14 +8,14 @@ import { QuizContext } from "../context/quiz.context";
 
 function QuizPage() {
   const { quiz, getSingleQuiz } = useContext(QuizContext);
-  const { jobId, quizId } = useParams();
+  const { jobId } = useParams();
   const [quizObject, setQuizObject] = useState(null);
   const [isEndOfQuiz, setIsEndOfQuiz] = useState(false);
   const [quizRestarted, setQuizRestarted] = useState(false);
 
   useState(() => {
     const fetchQuiz = async () => {
-      await getSingleQuiz(jobId, quizId);
+      await getSingleQuiz(jobId);
     };
     fetchQuiz();
   }, []);
@@ -52,6 +52,8 @@ function QuizPage() {
     setQuizRestarted(true);
     setIsEndOfQuiz(false);
   };
+
+  console.log("QUIZ: ", quiz);
 
   return (
     <div className="flex flex-col items-center">
