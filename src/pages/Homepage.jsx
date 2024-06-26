@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import image1 from "../assets/images/image8.png";
 import image10 from "../assets/images/image10.png";
 import image13 from "../assets/images/image13.png";
@@ -12,9 +13,11 @@ export default function Homepage() {
           <h1 className="text-5xl">
             Track Jobs and Ace Interviews with AI-Generated Questions
           </h1>
-          <button className="bg-[#334155] text-white border border-hidden rounded h-10 w-32">
-            Get Started
-          </button>
+          <Link to="/dashboard">
+            <button className="bg-[#334155] text-white border border-hidden rounded h-10 w-32">
+              Get Started
+            </button>
+          </Link>
         </div>
         <div className="w-1/2">
           <img src={image1} alt="Image 1" />
@@ -71,9 +74,11 @@ export default function Homepage() {
             applications and excel in your interviews. Join us and take control
             of your job search journey!
           </p>
-          <button className="bg-[#334155] text-white border border-hidden rounded h-10 w-32">
-            Sign up Now
-          </button>
+          <Link to="/login">
+            <button className="bg-[#334155] text-white border border-hidden rounded h-10 w-32">
+              Sign up Now
+            </button>
+          </Link>
         </div>
       </section>
     </div>
