@@ -17,8 +17,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
+    "react-quiz-component": "^0.8.2",
     "react-router-dom": "^6.23.1",
-    "sweetalert2": "^11.12.0"
+    "sweetalert2": "^11.12.0",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

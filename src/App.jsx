@@ -1,4 +1,5 @@
 import "./App.css";
+import "./customQuizStyles.css";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Navbar from "./components/Navbar";
@@ -8,6 +9,10 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import { Toaster } from "react-hot-toast";
 import JobDescriptionPage from "./pages/JobDescriptionPage";
+import QuizPage from "./pages/QuizPage";
+
+// Pages
+import AIPage from "./pages/AIPage";
 
 function App() {
   const IsLoggedIn = () => {
@@ -41,8 +46,8 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/jobs" element={<JobDescriptionPage />} />
           <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
-          {/* <Route path="/quiz/:jobId" element={<AIPage />} />
-          <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} /> */}
+          <Route path="/quiz/:jobId" element={<AIPage />} />
+          <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} />
         </Route>
       </Routes>
       <Footer />
