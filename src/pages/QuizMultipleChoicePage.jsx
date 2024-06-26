@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Quiz from "react-quiz-component";
 import { generateQuiz } from "../quizFunction";
 
-import { useContext } from "react";
-import { QuizContext } from "../context/quiz.context";
-
 function QuizPage() {
-  const { quiz, getSingleQuiz } = useContext(QuizContext);
-  const { jobId } = useParams();
+  const location = useLocation();
+  const { quiz } = location.state || {};
+
   const [quizObject, setQuizObject] = useState(null);
   const [isEndOfQuiz, setIsEndOfQuiz] = useState(false);
   const [quizRestarted, setQuizRestarted] = useState(false);
-
-  useState(() => {
-    const fetchQuiz = async () => {
-      await getSingleQuiz(jobId);
-    };
-    fetchQuiz();
-  }, []);
 
   const generateQuizObject = () => {
     setQuizObject(
@@ -52,8 +43,6 @@ function QuizPage() {
     setQuizRestarted(true);
     setIsEndOfQuiz(false);
   };
-
-  console.log("QUIZ: ", quiz);
 
   return (
     <div className="flex flex-col items-center">

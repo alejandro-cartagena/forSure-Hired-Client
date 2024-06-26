@@ -1,18 +1,22 @@
 import "./App.css";
 import "./customQuizStyles.css";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import { Toaster } from "react-hot-toast";
+
+// Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+// Pages
+import Homepage from "./pages/Homepage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-import { Toaster } from "react-hot-toast";
 import JobDescriptionPage from "./pages/JobDescriptionPage";
-import QuizPage from "./pages/QuizPage";
-
-// Pages
 import AIPage from "./pages/AIPage";
+import QuizDecidePage from "./pages/QuizDecidePage";
+import QuizMultipleChoicePage from "./pages/QuizMultipleChoicePage";
+import QuizQuestionsAndAnswersPage from "./pages/QuizQuestionsAndAnswersPage";
 
 function App() {
   const IsLoggedIn = () => {
@@ -46,8 +50,21 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/jobs" element={<JobDescriptionPage />} />
           <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
+
+          {/*******************/}
+          {/* Quiz AI Routes */}
+          {/*****************/}
           <Route path="/quiz/:jobId" element={<AIPage />} />
-          <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} />
+          <Route path="/quiz/:jobId/:quizId" element={<QuizDecidePage />} />
+          {/* Multiple Quiz Choice Route */}
+          <Route
+            path="/quiz/:jobId/:quizId/multiple-choice"
+            element={<QuizMultipleChoicePage />}
+          />
+          <Route
+            path="/quiz/:jobId/:quizId/questions-answers"
+            element={<QuizQuestionsAndAnswersPage />}
+          />
         </Route>
       </Routes>
       <Footer />
