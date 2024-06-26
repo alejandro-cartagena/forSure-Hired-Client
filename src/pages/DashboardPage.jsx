@@ -27,7 +27,7 @@ const DashboardPage = () => {
     <section className="flex flex-col gap-6 px-6 md:px-32">
       <div className="flex flex-col justify-between border-b-4 border-b-slate-300 w-full mb-2 py-2 ">
         <h3 className="text-2xl text-slate-600">
-          Welcome, {user && user.username}
+          Welcome, {user && (user.fullName || user.username)}
         </h3>
         <div className="flex flex-col lg:flex-row justify-between lg:items-center">
           <h1 className="text-4xl py-2 font-semibold ">Jobs Board</h1>
