@@ -13,6 +13,7 @@ import QuizPage from "./pages/QuizPage";
 
 // Pages
 import AIPage from "./pages/AIPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   const IsLoggedIn = () => {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/quiz/:jobId" element={<AIPage />} />
           <Route path="/quiz/:jobId/:quizId" element={<QuizPage />} />
         </Route>
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Footer />
       <Toaster />
