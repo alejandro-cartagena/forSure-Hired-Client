@@ -1,43 +1,58 @@
 import { useContext, useEffect, useState } from "react";
 import { JobsContext } from "../context/jobs.context";
-import JobCard from "./JobCard";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import iconTrash from "../assets/icon/icontrash.svg";
+import Column from "./Column";
+import { DragDropContext } from "@hello-pangea/dnd";
 
 const filteredJobs = (jobs, stage) => {
   return jobs.filter((job) => job.stage === stage);
 };
+const reorder = (list, startIndex, endIndex) => {
+  const result = [...list];
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
 
 const JobsBoard = () => {
-  const { jobs, getAllUserJobs } = useContext(JobsContext);
-  const [appliedJobs, setAppliedJobs] = useState(null);
-  const [InterviewJobs, setInterviewJobs] = useState(null);
-  const [rejectedJobs, setRejectedJobs] = useState(null);
-  const [closedJobs, setClosedJobs] = useState(null);
+  const { jobs, getAllUserJobs, updateJob } = useContext(JobsContext);
+  const [columns, setColumns] = useState({});
 
-  const { deleteJob } = useContext(JobsContext);
+  const handleDrag = (result) => {
+    const { source, destination } = result;
 
-  const handleDeleteJob = (jobId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Deleting a job will remove all quizzes associated with it!",
-      icon: "error",
-      iconColor: "#F87171",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
-      confirmButtonColor: "#1C91B2",
-      cancelButtonColor: "#F87171",
-    }).then((result) => {
-      result.isConfirmed && deleteJob(jobId);
-    });
+    if (
+      !destination ||
+      (source.index === destination.index &&
+        source.droppableId === destination.droppableId)
+    ) {
+      return;
+    }
+
+    const startColumn = source.droppableId;
+    const endColumn = destination.droppableId;
+    if (startColumn === endColumn) {
+      const reorderCol = reorder(
+        columns[startColumn].jobs,
+        source.index,
+        destination.index
+      );
+      const newState = { ...columns };
+      newState[startColumn].jobs = reorderCol;
+      setColumns(newState);
+    } else {
+      let sourceColumn = { ...columns[source.droppableId] }.jobs;
+      let destinationColumn = { ...columns[destination.droppableId] }.jobs;
+      const [movedJob] = sourceColumn.splice(source.index, 1);
+      updateJob(movedJob._id, { stage: destination.droppableId });
+      destinationColumn.splice(destination.index, 0, movedJob);
+      const newState = { ...columns };
+      newState[source.droppableId].jobs = sourceColumn;
+      newState[destination.droppableId].jobs = destinationColumn;
+      setColumns(newState);
+    }
   };
-
-  // const handleJobsDetails = (job) => {
-  //   setShowJobModal(true);
-  //   setSelectedJob(job);
-  // };
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -48,56 +63,25 @@ const JobsBoard = () => {
 
   useEffect(() => {
     if (jobs) {
-      setAppliedJobs(filteredJobs(jobs, "Applied"));
-      setInterviewJobs(filteredJobs(jobs, "Interview"));
-      setRejectedJobs(filteredJobs(jobs, "Rejected"));
-      setClosedJobs(filteredJobs(jobs, "Closed"));
+      setColumns({
+        Applied: { jobs: filteredJobs(jobs, "Applied") },
+        Interview: { jobs: filteredJobs(jobs, "Interview") },
+        Rejected: { jobs: filteredJobs(jobs, "Rejected") },
+        Closed: { jobs: filteredJobs(jobs, "Closed") },
+      });
+      console.log("calling jobs");
     }
-  }, [jobs]);
+  }, [jobs && jobs.length]);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between gap-2 flex-wrap ">
-      <div className="flex flex-col gap-2 flex-1  rounded-md h-[70vh] bg-slate-200 overflow-hidden min-w-[300px]">
-        <h1 className="text-white bg-emerald-500 py-4 px-14 rounded-md font-semibold text-xl text-center m-4">
-          Applied
-        </h1>
-        <div className="flex flex-col gap-3 overflow-auto px-4 mb-2 pb-2">
-          {jobs &&
-            appliedJobs &&
-            appliedJobs.map((job) => (
-              <div
-                key={job._id}
-                className="relative shadow-md bg-slate-50 rounded-md hover:bg-green-200"
-              >
-                <Link to={`/jobs/${job._id}`}>
-                  <JobCard job={job} />
-                </Link>
-                <img
-                  src={iconTrash}
-                  alt="trash icon"
-                  className="h-4 absolute top-4 right-4 cursor-pointer z-20"
-                  onClick={() => handleDeleteJob(job._id)}
-                />
-              </div>
-            ))}
-        </div>
+    <DragDropContext onDragEnd={(result) => handleDrag(result)}>
+      <div className="flex flex-col lg:flex-row justify-between gap-2 flex-wrap ">
+        {jobs &&
+          Object.entries(columns).map(([status, columnData], index) => (
+            <Column key={index} title={status} jobsList={columnData.jobs} />
+          ))}
       </div>
-      <div className="flex flex-col gap-2 flex-1 p-4 rounded-md h-[70vh] bg-slate-200 min-w-[300px] ">
-        <h1 className="text-white bg-yellow-600 py-4 px-14 rounded-md font-semibold text-xl text-center">
-          Interview
-        </h1>
-      </div>
-      <div className="flex flex-col gap-2 flex-1 p-4 rounded-md h-[70vh] bg-slate-200 min-w-[300px]">
-        <h1 className="text-white bg-red-400 py-4 px-14 rounded-md font-semibold text-xl text-center">
-          Rejected
-        </h1>
-      </div>
-      <div className="flex flex-col gap-2 flex-1 p-4 rounded-md h-[70vh] bg-slate-200 min-w-[300px]">
-        <h1 className="text-white bg-cyan-600 py-4 px-14 rounded-md font-semibold text-xl text-center">
-          Closed
-        </h1>
-      </div>
-    </div>
+    </DragDropContext>
   );
 };
 
