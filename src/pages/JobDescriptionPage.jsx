@@ -42,7 +42,7 @@ const JobDescriptionPage = () => {
 
   return (
     <div className="md:px-32 px-20 bg-slate-200">
-      <div className="flex justify-between gap-4 bg-slate-50 m-4 p-4 rounded-md">
+      <div className="flex justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md">
         <h1 className="text-3xl font-semibold text-slate-700 w-[300px] text-center -ml-5 ">
           Jobs List
         </h1>
