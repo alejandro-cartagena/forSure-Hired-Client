@@ -14,6 +14,7 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import JobDescriptionPage from "./pages/JobDescriptionPage";
 import AIPage from "./pages/AIPage";
+import AboutPage from "./pages/AboutPage";
 import QuizDecidePage from "./pages/QuizDecidePage";
 import QuizMultipleChoicePage from "./pages/QuizMultipleChoicePage";
 import QuizQuestionsAndAnswersPage from "./pages/QuizQuestionsAndAnswersPage";
@@ -66,6 +67,7 @@ function App() {
             element={<QuizQuestionsAndAnswersPage />}
           />
         </Route>
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Footer />
       <Toaster />
