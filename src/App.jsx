@@ -15,9 +15,13 @@ import DashboardPage from "./pages/DashboardPage";
 import JobDescriptionPage from "./pages/JobDescriptionPage";
 import AIPage from "./pages/AIPage";
 import AboutPage from "./pages/AboutPage";
+
+import UserProfile from "./pages/UserProfile";
+
 import QuizDecidePage from "./pages/QuizDecidePage";
 import QuizMultipleChoicePage from "./pages/QuizMultipleChoicePage";
 import QuizQuestionsAndAnswersPage from "./pages/QuizQuestionsAndAnswersPage";
+
 
 function App() {
   const IsLoggedIn = () => {
@@ -48,6 +52,7 @@ function App() {
         </Route>
 
         <Route element={<IsLoggedIn />}>
+          <Route path="/user" element={<UserProfile />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/jobs" element={<JobDescriptionPage />} />
           <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
