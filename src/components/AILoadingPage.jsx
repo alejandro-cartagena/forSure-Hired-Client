@@ -1,24 +1,14 @@
 import React from "react";
-import { useState, CSSProperties } from "react";
-import { HashRouter } from "react-router-dom";
-import {
-  GridLoader,
-  HashLoader,
-  MoonLoader,
-  PuffLoader,
-  RingLoader,
-} from "react-spinners";
-import ClipLoader from "react-spinners/ClipLoader";
+import { HashLoader } from "react-spinners";
 
 const override = {
   display: "block",
   margin: "0 auto",
   borderColor: "green",
 };
+const color = "#65a30d";
 
 function AILoadingPage() {
-  let [color, setColor] = useState("#65a30d");
-
   return (
     <div className="flex flex-col items-center text-[#334155] text-center max-w-[480px] mx-auto gap-10">
       <h1 className="text-4xl font-semibold mt-16">Generating Questions...</h1>

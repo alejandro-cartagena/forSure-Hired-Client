@@ -5,3 +5,17 @@
 .container {
   @apply md:px-32 px-20;
 }
+
+.Applied {
+  @apply bg-green-600
+}
+
+.Interview {
+  @apply bg-yellow-600
+}
+.Rejected {
+  @apply bg-red-400
+}
+.Closed {
+  @apply bg-cyan-600
+}

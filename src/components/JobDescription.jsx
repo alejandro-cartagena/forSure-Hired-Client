@@ -23,7 +23,7 @@ const JobDescription = ({ selectedJob }) => {
   };
 
   return selectedJob ? (
-    <div className="relative flex flex-col gap-4 mb-2 p-10 bg-slate-50 text-slate-700 overflow-auto w-full rounded-md mr-4">
+    <div className="relative flex flex-col gap-4 mb-2 p-10 bg-slate-50 text-slate-700 overflow-auto w-full rounded-md ">
       <div className="absolute top-4 right-4">
         <DropDown3Dots setShowEditModal={setShowEditModal} />
       </div>

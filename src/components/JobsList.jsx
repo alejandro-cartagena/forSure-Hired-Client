@@ -5,7 +5,7 @@ const JobsList = ({ jobs }) => {
   const { jobId } = useParams();
   return (
     <div className="flex flex-col min-w-[300px] gap-4 ">
-      <div className="flex flex-col gap-3 overflow-auto px-4 mb-2 pb-2">
+      <div className="flex flex-col gap-3 overflow-auto pr-2 mb-2 pb-2">
         {jobs &&
           jobs.map((job) => (
             <div

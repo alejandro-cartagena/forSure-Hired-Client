@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import image1 from "../assets/images/image8.png";
-import image10 from "../assets/images/image10.png";
+import dashboarddemo from "../assets/images/dashboarddemo.png";
 import image13 from "../assets/images/image13.png";
 import image14 from "../assets/images/image14.png";
 
@@ -10,17 +10,17 @@ export default function Homepage() {
     <div className="flex flex-col">
       <section className="bg-[#F1F5F9] py-12 w-full px-20 md:px-32 justify-between gap-8 flex">
         <div className="w-1/2 flex flex-col justify-center items-center gap-14">
-          <h1 className="text-5xl">
+          <h1 className="text-5xl  text-center">
             Track Jobs and Ace Interviews with AI-Generated Questions
           </h1>
-          <Link to="/dashboard">
+          <Link to="/signup">
             <button className="bg-[#334155] text-white border border-hidden rounded h-10 w-32">
               Get Started
             </button>
           </Link>
         </div>
         <div className="w-1/2">
-          <img src={image1} alt="Image 1" />
+          <img src={image1} alt="Image 1" className="m-auto" />
         </div>
       </section>
       <section className="bg-[#DCFFCF] py-12 flex flex-col items-center">
@@ -29,7 +29,7 @@ export default function Homepage() {
             Keep track of Job Application
           </h1>
           <div className="w-full py-12 flex justify-center">
-            <img src={image10} alt="Image 1" />
+            <img src={dashboarddemo} alt="Image 1" className="w-[60%]" />
           </div>
           <p className="text-1xl text-center w-[40vw]">
             Easily manage and organize your job applications with our intuitive
@@ -41,14 +41,14 @@ export default function Homepage() {
       <section className="bg-[#FFFFFF] justify-between gap-8 flex items-center py-14 px-20 w-full">
         <div className="w-1/2 text-center">
           <h1 className="text-6xl mb-8">Job Overview</h1>
-          <p>
+          <p className="mx-10 text-center">
             Access a dedicated page to view all your saved jobs in a clean,
             two-column layout similar to popular job sites like Indeed.
             Effortlessly search and filter to find specific jobs.
           </p>
         </div>
         <div className="w-1/2 py-12">
-          <img src={image13} alt="Image 13" />
+          <img src={image13} alt="Image 13" className="mx-auto" />
         </div>
       </section>
       <section className="py-12 bg-[#F1F5F9] w-full flex justify-between px-20">

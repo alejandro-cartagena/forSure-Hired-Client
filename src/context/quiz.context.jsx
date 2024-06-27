@@ -17,9 +17,9 @@ function QuizProvider({ children }) {
     }
   };
 
-  const getSingleQuiz = async (jobId, quizId) => {
+  const getSingleQuiz = async (jobId) => {
     try {
-      const response = await api.get(`/quiz/${jobId}/${quizId}`);
+      const response = await api.get(`/quiz/${jobId}`);
       setQuiz(response.data);
     } catch (error) {
       console.log(error.message);

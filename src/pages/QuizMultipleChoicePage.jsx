@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Quiz from "react-quiz-component";
 import { generateQuiz } from "../quizFunction";
 
-import { useContext } from "react";
-import { QuizContext } from "../context/quiz.context";
-
 function QuizPage() {
-  const { quiz, getSingleQuiz } = useContext(QuizContext);
-  const { jobId, quizId } = useParams();
+  const location = useLocation();
+  const { quiz } = location.state || {};
+
   const [quizObject, setQuizObject] = useState(null);
   const [isEndOfQuiz, setIsEndOfQuiz] = useState(false);
   const [quizRestarted, setQuizRestarted] = useState(false);
-
-  useState(() => {
-    const fetchQuiz = async () => {
-      await getSingleQuiz(jobId, quizId);
-    };
-    fetchQuiz();
-  }, []);
 
   const generateQuizObject = () => {
     setQuizObject(
@@ -54,12 +45,11 @@ function QuizPage() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-5xl text-center mb-6">Quiz Time!</h1>
+    <div className="flex flex-col items-center bg-slate-200 min-h-[75vh]">
       {isEndOfQuiz && (
         <button
           onClick={restartQuiz}
-          className="bg-slate-300 p-2 rounded hover:bg-[#65a30d] hover:text-white"
+          className="bg-slate-300 p-2 rounded hover:bg-[#65a30d] hover:text-white -mb-12 mt-12"
         >
           Restart Quiz
         </button>
