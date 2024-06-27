@@ -48,7 +48,7 @@ export default function UserProfile() {
           />
           <p>Please enter image url below:</p>
           <input
-            className="w-[60%] text-center h-8 justify-self border rounded-md overflow-hidden"
+            className="w-[60%] px-2 py-1 text-center h-8 justify-self border rounded-md overflow-hidden"
             type="text"
             name="profilePic"
             placeholder="picture url"
