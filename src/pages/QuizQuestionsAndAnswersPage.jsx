@@ -17,8 +17,8 @@ function AIShowQuestionsAndAnswers({ chatGPTJSONResponse }) {
   console.log("QUIZ = ", quiz);
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-4xl font-semibold mb-8 text-center">
+    <div className="flex flex-col items-center bg-slate-200 text-[#334155]">
+      <h1 className="text-4xl font-semibold my-8 text-center">
         Interview Questions
       </h1>
 
@@ -27,7 +27,7 @@ function AIShowQuestionsAndAnswers({ chatGPTJSONResponse }) {
           className={`p-4 rounded cursor-pointer ${
             questionType === "behavioral"
               ? "bg-green-100 border border-1 border-green-600 text-green-700"
-              : "bg-slate-200 hover:bg-slate-300"
+              : "bg-slate-300 hover:bg-slate-400"
           }`}
           value={"behavioral"}
           onClick={handleQuestionTypeClick}
@@ -38,7 +38,7 @@ function AIShowQuestionsAndAnswers({ chatGPTJSONResponse }) {
           className={`p-4 rounded cursor-pointer ${
             questionType === "technical"
               ? "bg-green-100 border border-1 border-green-600 text-green-700"
-              : "bg-slate-200 hover:bg-slate-300"
+              : "bg-slate-300 hover:bg-slate-400"
           }`}
           value={"technical"}
           onClick={handleQuestionTypeClick}
@@ -53,7 +53,7 @@ function AIShowQuestionsAndAnswers({ chatGPTJSONResponse }) {
             return (
               <div
                 key={index}
-                className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-50 rounded p-4"
               >
                 <h2 className="text-2xl font-semibold mb-4">
                   Question {index + 1}
@@ -75,7 +75,7 @@ function AIShowQuestionsAndAnswers({ chatGPTJSONResponse }) {
             return (
               <div
                 key={index}
-                className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-50 rounded p-4"
               >
                 <h2 className="text-2xl font-semibold mb-4">
                   Question {index + 1}

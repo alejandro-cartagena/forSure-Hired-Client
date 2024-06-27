@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { HashLoader } from "react-spinners";
 
 const override = {
@@ -7,10 +6,9 @@ const override = {
   margin: "0 auto",
   borderColor: "green",
 };
+const color = "#65a30d";
 
 function AILoadingPage() {
-  const [color, setColor] = useState("#65a30d");
-
   return (
     <div className="flex flex-col items-center text-[#334155] text-center max-w-[480px] mx-auto gap-10">
       <h1 className="text-4xl font-semibold mt-16">Generating Questions...</h1>

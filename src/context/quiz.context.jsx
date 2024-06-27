@@ -21,7 +21,6 @@ function QuizProvider({ children }) {
     try {
       const response = await api.get(`/quiz/${jobId}`);
       setQuiz(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }

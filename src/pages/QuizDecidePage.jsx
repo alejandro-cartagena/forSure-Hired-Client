@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { QuizContext } from "../context/quiz.context";
 
@@ -13,9 +13,9 @@ const override = {
   borderColor: "green",
 };
 
-function QuizDecidePage() {
-  const [color, setColor] = useState("#65a30d");
+const color = "#65a30d";
 
+function QuizDecidePage() {
   const { quiz, getSingleQuiz } = useContext(QuizContext);
   const { jobId, quizId } = useParams();
 
@@ -26,18 +26,16 @@ function QuizDecidePage() {
     fetchQuiz();
   }, []);
 
-  //   console.log("QUIZ = ", quiz);
-
   return (
-    <div className="flex flex-col items-center text-[#334155]">
+    <div className="min-h-[75vh] flex flex-col items-center text-[#334155] bg-slate-200 px-4 md:px-0">
       {quiz ? (
-        <div>
-          <h1 className="text-5xl text-center mb-12">Choose Quiz</h1>
+        <div className="mb-12">
+          <h1 className="text-5xl text-center my-12">Choose Quiz</h1>
 
           {/* Quiz Card Container */}
           <div className="flex gap-4 flex-wrap justify-center">
             {/* Start Quiz Card */}
-            <div className="flex flex-col items-center bg-slate-200 p-8 rounded w-full max-w-[400px]">
+            <div className="flex flex-col items-center bg-slate-50 p-8 rounded w-full max-w-[400px]">
               <h2 className="text-3xl mb-4">Multiple Choice</h2>
               <img className="w-full max-w-36 mb-6" src={testQuizIcon} alt="" />
               <p className="text-center mb-6">
@@ -53,7 +51,7 @@ function QuizDecidePage() {
             </div>
 
             {/* View Questions and Answers Card */}
-            <div className="flex flex-col items-center bg-slate-200 p-8 rounded w-full max-w-[400px]">
+            <div className="flex flex-col items-center bg-slate-50 p-8 rounded w-full max-w-[400px]">
               <h2 className="text-3xl mb-4">Questions & Answers</h2>
               <img
                 className="w-full max-w-36 mb-6"

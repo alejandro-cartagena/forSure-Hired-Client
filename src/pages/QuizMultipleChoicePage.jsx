@@ -45,12 +45,11 @@ function QuizPage() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-5xl text-center mb-6">Quiz Time!</h1>
+    <div className="flex flex-col items-center bg-slate-200 min-h-[75vh]">
       {isEndOfQuiz && (
         <button
           onClick={restartQuiz}
-          className="bg-slate-300 p-2 rounded hover:bg-[#65a30d] hover:text-white"
+          className="bg-slate-300 p-2 rounded hover:bg-[#65a30d] hover:text-white -mb-12 mt-12"
         >
           Restart Quiz
         </button>
