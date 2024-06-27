@@ -9,7 +9,7 @@ import AILoadingPage from "../components/AILoadingPage.jsx";
 import studyQuizIcon from "../assets/icon/studyQuizIcon.svg";
 
 import { HashLoader } from "react-spinners";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const override = {
   display: "block",
