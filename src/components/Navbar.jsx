@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 export default function Navbar() {
   const { user } = useContext(AuthContext);
   return (
-    <div className="flex items-center justify-between py-6 md:px-32 px-20 bg-slate-50">
+    <div className="flex items-center justify-between py-6 md:px-32 px-20 bg-slate-50 shadow-md">
       <Link to="/">
         <div className="flex items-center gap-2">
           <img src={logo} alt="For Sure Hire Logo" className="w-16 h-16" />
