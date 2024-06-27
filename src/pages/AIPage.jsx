@@ -199,7 +199,7 @@ function AIPage() {
                   className="w-full max-w-[700px] border-4 border-[#DCE1E9] rounded-md p-4 resize-none mb-12 cursor-default"
                   name=""
                   id=""
-                  rows={12}
+                  rows={20}
                   placeholder="Select a Example Description to view a template or paste your own description here"
                   value={jobDescription}
                   required={true}
