@@ -31,7 +31,7 @@ export default function UserDropdownMenu() {
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-slate-50 px-3 py-2 text-sm font-semibold text-gray-900 hover:shadow-sm hover:ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-            <img className="h-7 rounded-full" src={user.profilePic} />
+            <img className="h-7 w-7 rounded-full" src={user.profilePic} />
           </MenuButton>
         </div>
 

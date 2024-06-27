@@ -21,7 +21,7 @@ import UserProfile from "./pages/UserProfile";
 import QuizDecidePage from "./pages/QuizDecidePage";
 import QuizMultipleChoicePage from "./pages/QuizMultipleChoicePage";
 import QuizQuestionsAndAnswersPage from "./pages/QuizQuestionsAndAnswersPage";
-
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const IsLoggedIn = () => {
@@ -73,6 +73,7 @@ function App() {
           />
         </Route>
         <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
       <Toaster />
