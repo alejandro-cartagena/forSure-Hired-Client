@@ -9,10 +9,8 @@ import {
 } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faRobot,
   faArrowRightFromBracket,
   faIdCard,
-  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
