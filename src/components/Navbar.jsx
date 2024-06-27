@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/images/FSH_logo.png";
 import { AuthContext } from "../context/auth.context";
+
+import UserProfile from "../pages/UserProfile";
+import UserDropdownMenu from "./UserDropdownMenu";
+
+const showUserProfilePage = () => {
+  ("/user");
+};
 
 export default function Navbar() {
   const { user } = useContext(AuthContext);
@@ -53,11 +60,7 @@ export default function Navbar() {
           About
         </NavLink>
         <span>|</span>
-        {user ? (
-          <img src={user.profilePic} alt="profile" className="h-7" />
-        ) : (
-          <NavLink to="/login">Login</NavLink>
-        )}
+        {user ? <UserDropdownMenu /> : <NavLink to="/login">Login</NavLink>}
       </nav>
     </div>
   );

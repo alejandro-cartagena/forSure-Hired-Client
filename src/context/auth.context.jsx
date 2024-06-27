@@ -78,9 +78,28 @@ function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.remove("authToken");
+    localStorage.removeItem("authToken");
     checkAuthentication();
     navigate("/");
+  };
+
+  const updateUserProfile = async (userInfo) => {
+    try {
+      const { username, email, fullName, address, profilePic } = userInfo;
+      const response = await api.put(`/user/${user._id}`, {
+        username,
+        email,
+        fullName,
+        address,
+        profilePic,
+      });
+
+      if (response.status == 200) {
+        checkAuthentication();
+      }
+    } catch (error) {
+      setAuthError(error.response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -97,6 +116,7 @@ function AuthProvider({ children }) {
         signup,
         logout,
         checkAuthentication,
+        updateUserProfile,
       }}
     >
       {children}

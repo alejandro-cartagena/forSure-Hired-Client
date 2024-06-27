@@ -14,6 +14,7 @@ import QuizPage from "./pages/QuizPage";
 // Pages
 import AIPage from "./pages/AIPage";
 import AboutPage from "./pages/AboutPage";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   const IsLoggedIn = () => {
@@ -44,6 +45,7 @@ function App() {
         </Route>
 
         <Route element={<IsLoggedIn />}>
+          <Route path="/user" element={<UserProfile />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/jobs" element={<JobDescriptionPage />} />
           <Route path="/jobs/:jobId" element={<JobDescriptionPage />} />
