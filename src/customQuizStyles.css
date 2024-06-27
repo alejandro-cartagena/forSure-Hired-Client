@@ -4,8 +4,10 @@
 /* BEFORE QUIZ STARTS STYLES */
 /****************************/
 .react-quiz-container {
+  color: #334155 !important;
+  margin: 5em 0 !important;
   border: none;
-  background-color: #e2e8f0;
+  background-color: #f8fafc;
   border-radius: 6px;
   padding: 2em;
   width: 90%;
@@ -32,12 +34,12 @@
   border-radius: 4px !important;
   font-size: 1.25rem !important;
   transition: ease-in-out 0.15s;
+  background-color: #e2e8f0 !important;
 }
 
 .react-quiz-container .startQuizWrapper .startQuizBtn:hover {
   transform: scale(1.05);
-  background-color: #65a30d;
-  color: #ffffff;
+  background-color: #86efac !important;
 }
 
 /**************************/
@@ -55,6 +57,7 @@
 
 .answerBtn {
   background-color: #cbd5e1 !important;
+  font-weight: 400 !important;
   font-size: 1rem !important;
 }
 
@@ -72,14 +75,19 @@
 }
 
 .nextQuestionBtn {
-  background-color: #ffffff;
+  background-color: #e2e8f0 !important;
   padding: 0.5em 1em !important;
   font-size: 1.125rem !important;
 }
 
+.nextQuestionBtn:hover {
+  background-color: #cbd5e1 !important;
+}
+
 .react-quiz-container .selection-tag.single,
 .react-quiz-container .number-of-selection {
-  background-color: #94a3b8 !important;
+  background-color: #334155 !important;
+  color: #f8fafc !important;
 }
 
 /**************************/
@@ -100,4 +108,12 @@
 
 .selected-option {
   position: static !important;
+}
+
+.card-body h2:first-of-type {
+  display: none !important;
+}
+
+.card-body h2 {
+  margin-bottom: 1em;
 }
