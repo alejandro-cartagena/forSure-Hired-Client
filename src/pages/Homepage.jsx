@@ -10,7 +10,7 @@ export default function Homepage() {
     <div className="flex flex-col">
       <section className="bg-[#F1F5F9] py-12 w-full px-20 md:px-32 justify-between gap-8 flex">
         <div className="w-1/2 flex flex-col justify-center items-center gap-14">
-          <h1 className="text-5xl">
+          <h1 className="text-5xl px-8">
             Track Jobs and Ace Interviews with AI-Generated Questions
           </h1>
           <Link to="/dashboard">

@@ -66,6 +66,7 @@ function AuthProvider({ children }) {
       } else {
         setIsLoggedIn(false);
         setUser(null);
+        localStorage.removeItem("authToken");
       }
     } catch (error) {
       if (error) {
@@ -74,11 +75,12 @@ function AuthProvider({ children }) {
       }
       setIsLoggedIn(false);
       setUser(null);
+      localStorage.removeItem("authToken");
     }
   };
 
   const logout = () => {
-    localStorage.remove("authToken");
+    localStorage.removeItem("authToken");
     checkAuthentication();
     navigate("/");
   };
