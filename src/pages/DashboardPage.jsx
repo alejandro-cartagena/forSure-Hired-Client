@@ -24,7 +24,7 @@ const DashboardPage = () => {
   const [showJobModal, setShowJobModal] = useState(false);
 
   return (
-    <section className="flex flex-col gap-6 py-12 px-6 md:px-32">
+    <section className="flex flex-col gap-6 py-12 px-4 md:px-32">
       <div className="flex flex-col justify-between border-b-4 border-b-slate-300 w-full mb-2">
         <h3 className="text-2xl text-slate-600">
           Welcome, {user && (user.fullName || user.username)}
