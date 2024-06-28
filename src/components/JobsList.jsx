@@ -4,7 +4,11 @@ import JobCard from "./JobCard";
 const JobsList = ({ jobs }) => {
   const { jobId } = useParams();
   return (
-    <div className="flex flex-col min-w-[300px] gap-4 ">
+    <div
+      className={`${
+        jobId ? "hidden" : "flex "
+      } md:flex flex-col min-w-[300px] gap-4 w-full md:max-w-[300px]`}
+    >
       <div className="flex flex-col gap-3 overflow-auto pr-2 mb-2 pb-2">
         {jobs &&
           jobs.map((job) => (

@@ -4,7 +4,8 @@ import locationIcon from "../assets/icon/location.svg";
 const formatDateToAgo = (date) => {
   let currDate = new Date(date);
   let now = Date.now();
-  return Math.floor((now - currDate) / 86400000);
+  let daysAgo = (now - currDate) / 86400000;
+  return Math.floor(daysAgo) ? Math.floor(daysAgo) + " days" : "Today";
 };
 
 const JobCard = ({ job }) => {
@@ -28,7 +29,7 @@ const JobCard = ({ job }) => {
         </div>
 
         <p className="text-sm text-slate-500 whitespace-nowrap">
-          {formatDateToAgo(job.appliedDate)} days
+          {formatDateToAgo(job.appliedDate)}
         </p>
       </div>
     </div>

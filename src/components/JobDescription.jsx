@@ -8,10 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DropDown3Dots from "./DropDown3Dots";
 import ManageJobForm from "./ManageJobForm";
+import { useParams } from "react-router-dom";
 
 const JobDescription = ({ selectedJob }) => {
   const [showMore, setShowMore] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const { jobId } = useParams();
 
   const formatSalary = (min, max) => {
     return `$${(min / 1000).toFixed(0)}K - ${(max / 1000).toFixed(0)}K/Year`;
@@ -19,11 +21,16 @@ const JobDescription = ({ selectedJob }) => {
   const formatDateToAgo = (date) => {
     let currDate = new Date(date);
     let now = Date.now();
-    return Math.floor((now - currDate) / 86400000);
+    let daysAgo = (now - currDate) / 86400000;
+    return Math.floor(daysAgo) ? Math.floor(daysAgo) + " days ago" : "Today";
   };
 
   return selectedJob ? (
-    <div className="relative flex flex-col gap-4 mb-2 p-10 bg-slate-50 text-slate-700 overflow-auto w-full rounded-md ">
+    <div
+      className={`relative ${
+        jobId ? "flex" : "hidden"
+      } md:flex flex-col gap-4 my-2 md:mt-0 p-10 bg-slate-50 text-slate-700 overflow-y-auto w-full rounded-md `}
+    >
       <div className="absolute top-4 right-4">
         <DropDown3Dots setShowEditModal={setShowEditModal} />
       </div>
@@ -39,7 +46,7 @@ const JobDescription = ({ selectedJob }) => {
         <h1 className="text-3xl font-bold tracking-wide mb-2">
           {selectedJob.title}
         </h1>
-        <p>Applied {formatDateToAgo(selectedJob.appliedDate)} days ago</p>
+        <p>Applied {formatDateToAgo(selectedJob.appliedDate)}</p>
       </div>
       <div className="border-b-2 border-slate-300 pb-4 gap-4 flex flex-col">
         <h1 className="text-2xl mb-4">Details</h1>
@@ -106,7 +113,11 @@ const JobDescription = ({ selectedJob }) => {
       )}
     </div>
   ) : (
-    <h1 className="text-3xl text-center p-5 w-full font-semibold text-slate-700">
+    <h1
+      className={`${
+        jobId ? "block" : "hidden"
+      } md:block text-3xl text-center p-5 w-full font-semibold text-slate-700`}
+    >
       Please select a Job to display Details
     </h1>
   );

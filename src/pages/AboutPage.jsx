@@ -6,6 +6,22 @@ import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 const AboutPage = () => {
   return (
     <div className="bg-slate-200">
+      <div className="flex flex-col py-10 px-4 md:px-32 items-center">
+        <h1 className="text-5xl font-semibold text-slate-600 text-center mb-10">
+          What is our Mission?
+        </h1>
+        <p className="md:w-[50vw] text-center text-slate-500 font-semibold">
+          At forSure Hired, our mission is to empower job seekers with an
+          intuitive and efficient tool to manage their job applications. We
+          understand that the job search process can be overwhelming, with
+          multiple positions, interviews, and communications to handle. Our goal
+          is to simplify and organize this process, allowing you to focus on
+          what matters most: finding the right job for you. With forSure Hired,
+          you can track the status of your applications, schedule interviews,
+          and receive reminders, all from a centralized and user-friendly
+          platform.
+        </p>
+      </div>
       <div className="flex flex-col py-10 px-4 md:px-32">
         <h1 className="text-5xl font-semibold text-slate-600 text-center mb-10">
           Meet Our Team
@@ -110,22 +126,6 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col py-10 px-4 md:px-32 items-center">
-        <h1 className="text-5xl font-semibold text-slate-600 text-center mb-10">
-          What is our Mission?
-        </h1>
-        <p className="md:w-[50vw] text-center text-slate-500 font-semibold">
-          At forSure Hired, our mission is to empower job seekers with an
-          intuitive and efficient tool to manage their job applications. We
-          understand that the job search process can be overwhelming, with
-          multiple positions, interviews, and communications to handle. Our goal
-          is to simplify and organize this process, allowing you to focus on
-          what matters most: finding the right job for you. With forSure Hired,
-          you can track the status of your applications, schedule interviews,
-          and receive reminders, all from a centralized and user-friendly
-          platform.
-        </p>
       </div>
     </div>
   );
