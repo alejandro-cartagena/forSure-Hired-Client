@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="text-[#334155] flex flex-col text-center sm:text-left sm:flex-row items-center justify-between py-6 md:px-32 px-20 bg-slate-50 mt-auto gap-4">
+    <div className="text-[#334155] flex flex-col text-center sm:text-left sm:flex-row items-center justify-between py-6 md:px-32 px-20 bg-slate-50 mt-auto gap-4 shadow-top-md">
       <div>
         <p className="content-center text-4xl">
           for<span className="text-[#4DB010]">Sure</span>Hired
