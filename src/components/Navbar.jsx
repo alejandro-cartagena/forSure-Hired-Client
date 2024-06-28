@@ -32,7 +32,7 @@ export default function Navbar() {
           />
           <div className="flex flex-col">
             <p className="content-center text-2xl sm:text-4xl">
-              for<span className="text-green-500">Sure</span>Hired
+              for<span className="text-[#4DB010]">Sure</span>Hired
             </p>
             <span className="text-xs sm:text-sm text-slate-400 tracking-[0.15em] text-center">
               The Ultimate Job Tracker
