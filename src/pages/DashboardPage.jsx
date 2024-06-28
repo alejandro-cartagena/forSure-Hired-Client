@@ -26,6 +26,7 @@ const DashboardPage = () => {
   return (
     <section className="flex flex-col gap-6 py-6 px-6 md:px-32 bg-slate-200">
       <div className="flex flex-col justify-between  w-full ">
+
         <h3 className="text-2xl text-slate-600">
           Welcome, {user && (user.fullName || user.username)}
         </h3>

@@ -41,6 +41,7 @@ const JobDescriptionPage = () => {
   }, [jobs, jobId]);
 
   return (
+
     <div className="md:px-32 px-4 bg-slate-200">
       <div
         className={` justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md  md:flex md:flex-row ${
