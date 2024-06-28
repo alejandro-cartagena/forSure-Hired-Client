@@ -5,7 +5,7 @@ import { Droppable, Draggable } from "@hello-pangea/dnd";
 
 const Column = ({ title, jobsList }) => {
   return (
-    <div className="flex flex-col gap-2 flex-1 rounded-md min-h-[70vh] bg-slate-200 overflow-hidden min-w-[300px]">
+    <div className="flex flex-col gap-2 flex-1 rounded-md md:min-h-[70vh] h-[70vh] bg-slate-300 overflow-y-hidden min-w-[300px]">
       <div
         className={`text-white py-3 px-14 rounded-md font-semibold m-4 text-center ${title}`}
       >

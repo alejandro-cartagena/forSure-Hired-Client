@@ -69,7 +69,6 @@ const JobsBoard = () => {
         Rejected: { jobs: filteredJobs(jobs, "Rejected") },
         Closed: { jobs: filteredJobs(jobs, "Closed") },
       });
-      console.log("calling jobs");
     }
   }, [jobs && jobs.length]);
 

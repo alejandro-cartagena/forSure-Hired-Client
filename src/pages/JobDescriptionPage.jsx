@@ -41,15 +41,20 @@ const JobDescriptionPage = () => {
   }, [jobs, jobId]);
 
   return (
-    <div className="px-4 md:px-32 bg-slate-200">
-      <div className="flex justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md">
+
+    <div className="md:px-32 px-4 bg-slate-200">
+      <div
+        className={` justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md  md:flex md:flex-row ${
+          jobId ? "hidden" : "flex flex-col"
+        }`}
+      >
         <h1 className="text-3xl font-semibold text-slate-700 w-[300px] text-center -ml-5 ">
           Jobs List
         </h1>
 
         <div className="flex flex-wrap justify-between items-center px-4 gap-2">
           <div className="relative flex items-center gap-2">
-            <select
+            {/* <select
               //   onChange={(e) => setSorting(e.target.value)}
               //   defaultValue={sorting}
               className="block appearance-none w-full bg-slate-200 border border-gray-200 text-gray-700 py-1.5 px-3 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -70,7 +75,7 @@ const JobDescriptionPage = () => {
               >
                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
-            </div>
+            </div> */}
           </div>
           <input
             // onChange={(e) => setSearching(e.target.value)}
