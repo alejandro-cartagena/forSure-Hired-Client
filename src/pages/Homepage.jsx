@@ -13,7 +13,7 @@ export default function Homepage() {
   return (
     <div className="flex flex-col text-[#334155]">
       {/* Hero Section */}
-      <section className="bg-[#F1F5F9] min-h-[70vh] py-16 w-full px-4 sm:px-16 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8    ">
+      <section className="bg-[#F1F5F9] min-h-[70vh] py-16 w-full px-4 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8    ">
         <ScrollAnimation
           className="text-center w-full lg:w-1/2"
           animateIn="fadeInLeft"
@@ -61,7 +61,7 @@ export default function Homepage() {
       </section>
 
       {/* Section 2 */}
-      <section className="bg-[#DCFFCF] px-4 sm:px-16 md:px-32 py-16 flex flex-col items-center">
+      <section className="bg-[#DCFFCF] px-4 md:px-32 py-16 flex flex-col items-center">
         <ScrollAnimation
           animateIn="fadeIn"
           animateOut="fadeOut"
@@ -89,7 +89,7 @@ export default function Homepage() {
       </section>
 
       {/* Section 3 */}
-      <section className="bg-[#FFFFFF] py-40 w-full px-4 sm:px-16 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8">
+      <section className="bg-[#FFFFFF] py-40 w-full px-4 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8">
         <ScrollAnimation
           className="w-full lg:w-1/2"
           animateIn="fadeInLeft"
@@ -124,7 +124,7 @@ export default function Homepage() {
       </section>
 
       {/* Section 4 */}
-      <section className="bg-[#F1F5F9] py-16 w-full px-4 sm:px-16 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8">
+      <section className="bg-[#F1F5F9] py-16 w-full px-4 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8">
         <ScrollAnimation
           className="w-full lg:w-1/2 order-last lg:order-first"
           animateIn="fadeInLeft"
@@ -162,7 +162,7 @@ export default function Homepage() {
       </section>
 
       {/* Section 5 */}
-      <section className="bg-[#DCFFCF] py-48 px-4 sm:px-16 md:px-32 w-full">
+      <section className="bg-[#DCFFCF] py-48 px-4 md:px-32 w-full">
         <ScrollAnimation
           animateIn="fadeIn"
           animateOut="fadeOut"
