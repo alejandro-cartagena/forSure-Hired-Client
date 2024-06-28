@@ -107,8 +107,8 @@ const AboutPage = () => {
             <p className="px-3 text-sm text-slate-500">
               Front-End Developer focused on building high-quality and engaging
               web applications, with a solid background in HTML, CSS, JavaScript
-              and frameworks like React and Astro. Actually deeping into MERN
-              Stack
+              and frameworks like React and Astro. Also experienced in the MERN
+              Stack.
             </p>
             <div className="flex justify-center items-center gap-8">
               <a href="https://www.linkedin.com/in/renmye/" target="_blank">
