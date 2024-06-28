@@ -18,3 +18,25 @@ to streamline your job search journey.
 
 
 ## Features
+### Drag and Drop
+![dragAndDrop](https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/2e70ae70-4bb3-4a49-8a4c-b5273d8444c2)
+
+### Jobs Full CRUD
+https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/7251e2ff-a37a-4aff-8ba2-f6cfcfe8ecc8
+
+
+### AI Generated Quiz Using Job Description
+https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/e4ef7496-0615-4c4f-bd72-645744f907e1
+
+
+### Multiple Choice Quiz
+https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/b98225e0-7f57-4683-a016-a1b29b523491
+
+
+
+### Questions & Answers
+https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/301db72f-8ca6-4891-b9dc-ab4e40bbc68d
+
+
+
+
