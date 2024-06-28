@@ -38,5 +38,11 @@ https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/b982
 https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/301db72f-8ca6-4891-b9dc-ab4e40bbc68d
 
 
+### User Authentication
+https://github.com/alejandro-cartagena/forSure-Hired-Client/assets/90916136/4574eb8a-8b8a-4c1c-8268-37618a061256
+
+
+
+
 
 
