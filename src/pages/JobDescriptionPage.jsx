@@ -26,6 +26,7 @@ const JobDescriptionPage = () => {
   const { jobs, getAllUserJobs } = useContext(JobsContext);
   const [selectedJob, setSelectedJob] = useState(null);
   const [showJobModal, setShowJobModal] = useState(false);
+  const [searching, setSearching] = useState("");
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -41,7 +42,6 @@ const JobDescriptionPage = () => {
   }, [jobs, jobId]);
 
   return (
-
     <div className="md:px-32 px-4 bg-slate-200">
       <div
         className={` justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md  md:flex md:flex-row ${
@@ -78,8 +78,8 @@ const JobDescriptionPage = () => {
             </div> */}
           </div>
           <input
-            // onChange={(e) => setSearching(e.target.value)}
-            // value={searching}
+            onChange={(e) => setSearching(e.target.value)}
+            value={searching}
             className="appearance-none block bg-slate-200 placeholder-gray-700 border border-gray-200 rounded-lg py-1.5 px-3 w-[180px] leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="search"
             name="search"
@@ -95,7 +95,15 @@ const JobDescriptionPage = () => {
         </div>
       </div>
       <div className="flex gap-10 w-full h-[65vh] overflow-y-hidden">
-        <JobsList jobs={jobs} />
+        <JobsList
+          jobs={
+            searching
+              ? jobs.filter((job) =>
+                  job.title.toLowerCase().includes(searching.toLowerCase())
+                )
+              : jobs
+          }
+        />
         <JobDescription selectedJob={selectedJob} />
       </div>
       {showJobModal && (
