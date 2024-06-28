@@ -126,13 +126,13 @@ export default function Homepage() {
       {/* Section 4 */}
       <section className="bg-[#F1F5F9] py-16 w-full px-4 sm:px-16 md:px-32 flex flex-col items-center lg:flex-row  lg:justify-between gap-8">
         <ScrollAnimation
-          className="w-full lg:w-1/2"
+          className="w-full lg:w-1/2 order-last lg:order-first"
           animateIn="fadeInLeft"
           animateOut="fadeOutLeft"
           duration={0.75}
           offset={360}
         >
-          <div className="flex justify-center gap-4 order-last lg:order-first">
+          <div className="flex justify-center gap-4 t">
             <img
               src={generatedQuestionsImg}
               alt="Image 13"
@@ -147,7 +147,7 @@ export default function Homepage() {
           duration={0.75}
           offset={300}
         >
-          <div className="text-center order:last flex flex-col justify-center gap-8">
+          <div className="text-center flex flex-col justify-center gap-8">
             <h1 className="text-5xl">
               Prepare with Interview Questions & Answers
             </h1>
