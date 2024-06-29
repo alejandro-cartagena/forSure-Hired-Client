@@ -1,11 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function LoginPage() {
   const [userInfo, setUserInfo] = useState({ loginInfo: "", password: "" });
   const { login, authError } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    const passwordInput = document.getElementById("password");
+    showPassword
+      ? (passwordInput.type = "text")
+      : (passwordInput.type = "password");
+  }, [showPassword]);
 
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -65,7 +75,7 @@ function LoginPage() {
                 </a>
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 relative">
               <input
                 id="password"
                 name="password"
@@ -76,6 +86,16 @@ function LoginPage() {
                 required
                 className="block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              <div
+                className="absolute top-1.5 right-2 text-slate-600 cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <FontAwesomeIcon icon={faEye} />
+                ) : (
+                  <FontAwesomeIcon icon={faEyeSlash} />
+                )}
+              </div>
             </div>
           </div>
 
