@@ -34,7 +34,7 @@ const ManageJobForm = ({ job, closeModal }) => {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative my-6 mx-auto w-auto max-[385px]:mt-[225px] md:mt-0 md:w-[640px] max-w-5xl max-[500px]:mx-4">
+        <div className="max-h-[90vh] overflow-y-auto relative mx-auto w-auto md:w-[640px] max-w-5xl max-[500px]:mx-4">
           {/*content*/}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
