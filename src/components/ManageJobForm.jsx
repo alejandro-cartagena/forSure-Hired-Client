@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { JobsContext } from "../context/jobs.context";
+import StateOptions from "./StateOptions";
 
 const ManageJobForm = ({ job, closeModal }) => {
   const [formData, setFormData] = useState({ ...job });
@@ -318,16 +319,27 @@ const ManageJobForm = ({ job, closeModal }) => {
                       >
                         State
                       </label>
-                      <input
-                        onChange={handleAddressChange}
-                        value={addressData.state}
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="state"
-                        name="state"
-                        type="address"
-                        placeholder="Company State"
-                        required
-                      />
+                      <div className="relative">
+                        <select
+                          onChange={handleAddressChange}
+                          defaultValue={addressData.state}
+                          className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          id="state"
+                          name="state"
+                          required
+                        >
+                          <StateOptions />
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg
+                            className="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -342,7 +354,11 @@ const ManageJobForm = ({ job, closeModal }) => {
                   <button
                     className="bg-green-600 hover:opacity-70 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-green-600"
                     type="submit"
-                    disabled={JSON.stringify(formData) === JSON.stringify(job)}
+                    disabled={
+                      JSON.stringify(formData) === JSON.stringify(job) &&
+                      JSON.stringify(addressData) ===
+                        JSON.stringify(job.company.address)
+                    }
                   >
                     {formData._id ? "Save" : "Create"}
                   </button>
