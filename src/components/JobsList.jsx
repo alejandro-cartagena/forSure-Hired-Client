@@ -7,7 +7,7 @@ const JobsList = ({ jobs }) => {
     <div
       className={`${
         jobId ? "hidden" : "flex "
-      } md:flex flex-col min-w-[300px] gap-4 w-full md:max-w-[300px]`}
+      } lg:flex flex-col min-w-[300px] gap-4 w-full lg:max-w-[300px]`}
     >
       <div className="flex flex-col gap-3 overflow-auto pr-2 mb-2 pb-2">
         {jobs &&

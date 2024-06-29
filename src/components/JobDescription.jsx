@@ -29,7 +29,7 @@ const JobDescription = ({ selectedJob }) => {
     <div
       className={`relative ${
         jobId ? "flex" : "hidden"
-      } md:flex flex-col gap-4 my-2 md:mt-0 p-10 bg-slate-50 text-slate-700 overflow-y-auto w-full rounded-md `}
+      } lg:flex flex-col gap-4 my-2 lg:mt-0 p-10 bg-slate-50 text-slate-700 overflow-y-auto w-full rounded-md `}
     >
       <div className="absolute top-4 right-4">
         <DropDown3Dots setShowEditModal={setShowEditModal} />

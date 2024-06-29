@@ -44,7 +44,7 @@ const JobDescriptionPage = () => {
   return (
     <div className="md:px-32 px-4 bg-slate-200">
       <div
-        className={` justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md  md:flex md:flex-row ${
+        className={` justify-between gap-4 bg-slate-50 my-4 p-4 rounded-md  lg:flex lg:flex-row ${
           jobId ? "hidden" : "flex flex-col"
         }`}
       >
@@ -70,7 +70,7 @@ const JobDescriptionPage = () => {
           </button>
         </div>
       </div>
-      <div className="flex gap-10 w-full h-[65vh] overflow-y-hidden">
+      <div className="flex gap-10 w-full h-[85vh] lg:h-[65vh] overflow-y-hidden">
         <JobsList
           jobs={
             searching
