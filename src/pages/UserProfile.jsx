@@ -19,11 +19,11 @@ export default function UserProfile() {
 
     //Create formData object with the file information
     const formData = new FormData();
-    formData.append("profilePic", file);
+    formData.append("imageUrl", file);
     //Call the route for upload file and update profilePic with response on the DB
     try {
       const response = await api.post("/image/upload", formData);
-      const profilePic = response.data.profilePic;
+      const profilePic = response.data.imageUrl;
       updateUserProfile({ profilePic });
     } catch (error) {
       console.error("Error uploading image:", error);
