@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import api from "../services/api";
 import { AuthContext } from "../context/auth.context";
 
@@ -6,16 +6,37 @@ export default function UserProfile() {
   const { updateUserProfile, user, checkAuthentication } =
     useContext(AuthContext);
   const [userInfo, setUserInfo] = useState({ ...user });
+  const fileInputRef = useRef(null);
+
+  const handleImgClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = async (e) => {
+    //If not file Return
+    const file = e.target.files[0];
+    if (!file) return;
+
+    //Create formData object with the file information
+    const formData = new FormData();
+    formData.append("imageUrl", file);
+    //Call the route for upload file and update profilePic with response on the DB
+    try {
+      const response = await api.post("/image/upload", formData);
+      const profilePic = response.data.imageUrl;
+      updateUserProfile({ profilePic });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUserProfile(userInfo);
     checkAuthentication();
-    console.log(user);
   };
 
   const onChangeUserInfo = (e) => {
-    console.log(userInfo);
     setUserInfo((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -43,17 +64,16 @@ export default function UserProfile() {
         <div className="flex flex-col mb-2 gap-2 justify-between items-center mx-2 my-2 w-full">
           <img
             src={user.profilePic}
-            alt="Profile Pictire"
-            className="h-32 mx-4 -mt-20 mb-4 w-32 object-cover shadow-lg rounded-full"
+            onClick={handleImgClick}
+            alt="profile picture"
+            className="h-32 mx-4 -mt-20 mb-4 w-32 object-cover shadow-lg rounded-full cursor-pointer"
           />
-          <p>Please enter image url below:</p>
           <input
-            className="w-[60%] px-2 py-1 text-center h-8 justify-self border rounded-md overflow-hidden"
-            type="text"
-            name="profilePic"
-            placeholder="picture url"
-            value={userInfo.profilePic}
-            onChange={onChangeUserInfo}
+            type="file"
+            accept="image/png, image/jpeg, image/webp"
+            ref={fileInputRef}
+            className="hidden"
+            onChange={handleFileChange}
           />
         </div>
         <div className="flex  items-center w-[30%]">

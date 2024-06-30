@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { JobsContext } from "../context/jobs.context";
 import StateOptions from "./StateOptions";
+import api from "../services/api";
 
 const ManageJobForm = ({ job, closeModal }) => {
   const [formData, setFormData] = useState({ ...job });
@@ -20,6 +21,20 @@ const ManageJobForm = ({ job, closeModal }) => {
 
   const handleAddressChange = (e) => {
     setAddressData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleUploadLogo = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("imageUrl", file);
+    try {
+      const response = await api.post("image/upload", formData);
+      setCompanyData((prev) => ({ ...prev, logo: response.data.imageUrl }));
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -266,12 +281,12 @@ const ManageJobForm = ({ job, closeModal }) => {
                         Logo URL
                       </label>
                       <input
-                        onChange={handleCompanyChange}
-                        value={companyData.logo}
+                        onChange={handleUploadLogo}
                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="logo"
                         name="logo"
-                        type="url"
+                        type="file"
+                        accept="image/png, image/jpeg, image/webp"
                       />
                     </div>
                   </div>
