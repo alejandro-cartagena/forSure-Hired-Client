@@ -69,10 +69,7 @@ function AuthProvider({ children }) {
         localStorage.removeItem("authToken");
       }
     } catch (error) {
-      if (error) {
-        setAuthError(error.response.data.message);
-        return;
-      }
+      setAuthError(error.response.data.message);
       setIsLoggedIn(false);
       setUser(null);
       localStorage.removeItem("authToken");
