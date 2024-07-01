@@ -66,18 +66,18 @@ function AuthProvider({ children }) {
       } else {
         setIsLoggedIn(false);
         setUser(null);
-        localStorage.removeItem("authToken");
+        localStorage.clear();
       }
     } catch (error) {
       setAuthError(error.response.data.message);
       setIsLoggedIn(false);
       setUser(null);
-      localStorage.removeItem("authToken");
+      localStorage.clear();
     }
   };
 
   const logout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.clear();
     checkAuthentication();
     navigate("/");
   };
