@@ -5,10 +5,20 @@ import logo from "../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+import { BeatLoader } from "react-spinners";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "green",
+};
+const color = "#65a30d";
+
 function LoginPage() {
   const [userInfo, setUserInfo] = useState({ loginInfo: "", password: "" });
   const { login, authError } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const passwordInput = document.getElementById("password");
@@ -21,9 +31,11 @@ function LoginPage() {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    login(userInfo);
+    setLoading(true);
+    await login(userInfo);
+    setLoading(false);
   };
 
   return (
@@ -98,15 +110,28 @@ function LoginPage() {
               </div>
             </div>
           </div>
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-            >
-              Sign in
-            </button>
-          </div>
+          {loading ? (
+            <div className="text-center my-12">
+              <BeatLoader
+                color={color}
+                loading={true}
+                cssOverride={override}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+                speedMultiplier={1}
+              />
+            </div>
+          ) : (
+            <div>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+              >
+                Sign in
+              </button>
+            </div>
+          )}
         </form>
         {authError && (
           <p className="text-center mt-2 text-red-500 font-semibold">
