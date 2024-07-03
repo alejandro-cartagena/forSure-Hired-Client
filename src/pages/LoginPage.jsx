@@ -56,6 +56,7 @@ function LoginPage() {
             >
               Username or Email
             </label>
+            <p className="text-sm text-slate-500">(Username: test123)</p>
             <div className="mt-2">
               <input
                 id="loginInfo"
@@ -78,6 +79,7 @@ function LoginPage() {
               >
                 Password
               </label>
+
               <div className="text-sm">
                 <a
                   href="#"
@@ -87,6 +89,7 @@ function LoginPage() {
                 </a>
               </div>
             </div>
+            <p className="text-sm text-slate-500">(Password: Password@123)</p>
             <div className="mt-2 relative">
               <input
                 id="password"
