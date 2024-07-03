@@ -70,7 +70,7 @@ const JobDescriptionPage = () => {
           </button>
         </div>
       </div>
-      <div className="flex gap-10 w-full h-[65vh] overflow-y-hidden">
+      <div className="flex gap-10 w-full h-[75vh] overflow-y-hidden">
         <JobsList
           jobs={
             searching

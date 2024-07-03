@@ -75,20 +75,26 @@ const JobDescription = ({ selectedJob }) => {
         </div>
         <div className="inline-flex gap-4 items-center">
           <FontAwesomeIcon className="text-2xl w-8" icon={faGlobe} />
-          <a href={selectedJob.jobUrl} className="text-blue-500">
+          <a
+            href={selectedJob.jobUrl}
+            target="_blank"
+            className=" text-blue-500"
+          >
             {selectedJob.jobUrl}
           </a>
         </div>
         <div className="inline-flex gap-4 items-center mt-1">
           <FontAwesomeIcon className="text-2xl w-8" icon={faListCheck} />
-          {selectedJob.skills.split(",").map((skill, i) => (
-            <span
-              key={i}
-              className="p-2 bg-slate-700 text-white font-semibold rounded-md"
-            >
-              {skill}
-            </span>
-          ))}
+          <div className="flex gap-2 flex-wrap">
+            {selectedJob.skills.split(",").map((skill, i) => (
+              <span
+                key={i}
+                className="p-2 bg-slate-700 text-white font-semibold rounded-md"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
       <div className="border-b-2 border-slate-300 pb-4  gap-2 flex flex-col">
