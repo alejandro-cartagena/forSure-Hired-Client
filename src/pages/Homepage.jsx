@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "animate.css/animate.compat.css";
+import ScrollAnimation from "react-animate-on-scroll";
 
 // Images;
 import dashboarddemo from "../assets/images/dashboarddemo.png";
 import generatedQuestionsImg from "../assets/images/generatedQuestions.png";
 import quizImg from "../assets/images/quiz.png";
 import jobPageImg from "../assets/images/jobPage.png";
-import ScrollAnimation from "react-animate-on-scroll";
+import logo from "../assets/images/logo.png";
 
 export default function Homepage() {
   return (
@@ -19,6 +20,7 @@ export default function Homepage() {
           animateIn="fadeInLeft"
           animateOut="fadeOutLeft"
           duration={0.75}
+          animateOnce={true}
         >
           <div className="flex flex-col justify-center gap-8">
             <h1 className="text-5xl">
@@ -44,6 +46,7 @@ export default function Homepage() {
           animateOut="fadeOutRight"
           duration={0.75}
           offset={320}
+          animateOnce={true}
         >
           <div className="flex justify-center gap-4">
             {/* <img
@@ -67,6 +70,7 @@ export default function Homepage() {
           animateOut="fadeOut"
           duration={0.75}
           offset={300}
+          animateOnce={true}
         >
           <div className="flex flex-col items-center justify-between gap-8">
             <h1 className="text-5xl text-center">
@@ -96,6 +100,7 @@ export default function Homepage() {
           animateOut="fadeOutLeft"
           duration={0.75}
           offset={170}
+          animateOnce={true}
         >
           <div className="text-center order:last flex flex-col justify-center gap-8 lg:order-first ">
             <h1 className="text-5xl">Job Overview</h1>
@@ -112,6 +117,7 @@ export default function Homepage() {
           animateOut="fadeOutRight"
           duration={0.75}
           offset={300}
+          animateOnce={true}
         >
           <div className="flex justify-center gap-4">
             <img
@@ -131,6 +137,7 @@ export default function Homepage() {
           animateOut="fadeOutLeft"
           duration={0.75}
           offset={360}
+          animateOnce={true}
         >
           <div className="flex justify-center gap-4 t">
             <img
@@ -145,7 +152,8 @@ export default function Homepage() {
           animateIn="fadeInRight"
           animateOut="fadeOutRight"
           duration={0.75}
-          offset={300}
+          offset={360}
+          animateOnce={true}
         >
           <div className="text-center flex flex-col justify-center gap-8">
             <h1 className="text-5xl">
@@ -167,8 +175,10 @@ export default function Homepage() {
           animateIn="fadeIn"
           animateOut="fadeOut"
           duration={0.75}
+          animateOnce={true}
         >
           <div className="flex flex-col items-center w-full gap-12">
+            <img src={logo} alt="" srcset="" />
             <p className="text-center text-2xl w-full lg:max-w-[700px]">
               forSure Hired is your all-in-one solution to keep track of your
               job applications and excel in your interviews. Join us and take
